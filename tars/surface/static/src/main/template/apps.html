@@ -1,0 +1,158 @@
+<div class="wrapper" ng-controller="com.ctrip.tars.apps.multi.Controller">
+  <!--
+            <h4 class="box-title" style="line-height: 36px;">
+              <ol class="breadcrumb">
+                <li>Tars</li>
+                <li>多应用发布</li>
+                <li ng-repeat="crumb in breadcrumb">{{ crumb.text }}</li>
+              </ol>
+            </h4>
+            -->
+  <div flp class="has-feedback apps-search-filters" style="width: 100%; height: 48px; margin: 0px; padding: 0px;">
+    <input type="text" id="criteria-name" name="criteria-name" ng-model="criteria.name" class="filter-search" placeholder="" style="width: 100%; height: 100%; padding: 8px 32px 8px 8px; background: #f5f5f5;">
+    <label for="criteria-name" style="left: 8px; top: 8px; line-height: 32px; padding: 0px; margin: 0px;">app's name or id</label>
+    <span class="feedback form-control-feedback" style="top: 8px; right: 8px; width: 32px; height: 32px; line-height: 32px; font-size: 16px;"><i class="fa fa-search"></i></span>
+  </div>
+
+  <div style="width: 100%; position: relative; height: {{ size.height + 48 + 48 }}px;" ng-style="{ 'height': '{{ size.height + 48 + 48 }}px' }">
+    <div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; padding: 0px; background: #f5f5f5;">
+      <div class="box" style="margin-bottom: 0px; background: #f5f5f5;">
+        <div class="box-header container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="padding-right: 0px; height: 48px;">
+              <h3 class="box-title">
+                <i class="fa fa-th"></i>
+                <span>&nbsp;应用列表</span>
+              </h3>
+            </div>
+            <div class="col-lg-7 hidden-md hidden-sm hidden-xs" style="padding-right: 0px;">
+              <div class="box-sorter navbar-form" role="sorter">
+                <div class="btn-group btn-group-sm">
+                  <button style="margin: 4px 4px 4px 0px;" class="btn btn-filter active" role="console-sorts" ng-click="sorter('appId')">AppId
+                    <i class="fa fa-arrow-down" ng-if="sorters.sort == 'appId' && sorters.sort_order"></i>
+                    <i class="fa fa-arrow-up" ng-if="sorters.sort == 'appId' && !sorters.sort_order"></i>
+                  </button>
+                  <button style="margin: 4px 0px 4px 4px;" class="btn btn-filter active" role="console-sorts" ng-click="sorter('name')">名称
+                    <i class="fa fa-arrow-down" ng-if="sorters.sort == 'name' && sorters.sort_order"></i>
+                    <i class="fa fa-arrow-up" ng-if="sorters.sort == 'name' && !sorters.sort_order"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 apps-status-filters" style="height: 40px; padding: 0px 0px 0px 0px;">
+              <div ng-repeat="command in monitors track by command._hashCode">
+                <action class="monitor-status" datasize="{{command.size}}" dataleft="{{command.left}}" datamarginleft="{{command.marginLeft}}" datatitle="{{command.title}}" dataicon="{{command.icon}}" datadisabled="{{ command.disabled }}" dataactive="{{ command.active }}" dataeffect="{{ command.effect }}" on-handle="command.click($parent, $event)" style="top: 50%; margin-top: -16px; box-shadow: none; -webkit-box-shadow: none;">
+                </action>
+
+                <span ng-if="command.value>0" class="badge" ng-style="{'backgroundColor': '{{ command.badge }}','left': '{{command.left}}', 'marginLeft': '0px'}" style="left: {{command.left}}; margin-left: 0px; position: absolute; padding: 2px 6px; color: #ffffff; border: 2px solid #f5f5f5;">{{command.value}}</span>
+              </div>
+
+              <!--
+                      <div class="tween-menu" tween-menu>
+                        <div class="tween-menu-wrapper">
+                            <ul class="tween-menu-items">
+                                <li class="tween-menu-item">
+                                    <button class="tween-menu-item-button">
+                                        <i class="tween-menu-item-icon icon icon-reply"></i>
+                                    </button>
+                                    <div class="tween-menu-item-bounce"></div>
+                                </li>
+                                <li class="tween-menu-item">
+                                    <button class="tween-menu-item-button">
+                                        <i class="tween-menu-item-icon icon icon-box"></i>
+                                    </button>
+                                    <div class="tween-menu-item-bounce"></div>
+                                </li>
+                                <li class="tween-menu-item">
+                                    <button class="tween-menu-item-button">
+                                        <i class="tween-menu-item-icon icon icon-trash"></i>
+                                    </button>
+                                    <div class="tween-menu-item-bounce"></div>
+                                </li>
+                            </ul>
+                            <button class="tween-menu-toggle-button">
+                                <i class="fa fa-plus tween-menu-toggle-icon"></i>
+                            </button>
+                        </div>
+                      </div>
+                      
+                      <div class="share" tween-share>
+                          <button class="share-toggle-button">
+                              <i class="share-icon fa fa-share-alt"></i>
+                          </button>
+                          <ul class="share-items">
+                              <li class="share-item">
+                                  <a href="#" class="share-button">
+                                      <i class="share-icon fa fa-check"></i>
+                                  </a>
+                              </li>
+                              <li class="share-item">
+                                  <a href="#" class="share-button">
+                                      <i class="share-icon fa fa-times"></i>
+                                  </a>
+                              </li>
+                              <li class="share-item">
+                                  <a href="#" class="share-button">
+                                      <i class="share-icon fa fa-bell"></i>
+                                  </a>
+                              </li>
+                              <li class="share-item">
+                                  <a href="#" class="share-button">
+                                      <i class="share-icon fa fa-stop"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                      -->
+            </div>
+          </div>
+        </div>
+
+        <div class="box-body">
+          <div role="multi-apps-scroller" class="scroller bg-wall" style="height: {{ size.height + 8 }}px;" ng-style="{ 'height': '{{ size.height + 8 }}px' }">
+            <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 40 }}px;" ng-style="{ 'minHeight': '{{ size.height + 40 }}px' }">
+              <!--<bubbles>-->
+              <popouts2 style="padding: 0px;">
+                <popout2 ripple ng-init="app = popout;" ng-repeat="popout in apps | filter: filters | orderBy: sort: sorters.sort_order" class="iscroll-item">
+                  <multi-app></multi-app>
+                  <!--<bubble>
+                              <multi-app-config></multi-app-config>
+                            </bubble>-->
+                </popout2>
+                <a ng-if="apps.length <= 0" href="javascript:void(0);" class="list-group-item" style="height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                  对不起，没有查询到任何应用。</a>
+              </popouts2>
+              <!--</bubbles>-->
+
+              <!--
+              <div class="list-group popout items">
+                <multi-app ng-repeat="app in apps"></multi-app>
+                <a ng-if="apps.length <= 0" href="javascript:void(0);" class="list-group-item" style="height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                  对不起，没有查询到任何应用。</a>
+              </div>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--
+              <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="text-center">
+                  <exclusive-btn-group>
+                    <div class="btn btn-filter active" disabled="disabled">
+                      <i class="fa fa-filter"></i>
+                    </div>
+                    <i-button i-content="{{countFailed}}" ng-click="toggleStatusWanted('failed')">发布失败</i-button>
+                    <i-button i-content="{{countPause}}" ng-click="toggleStatusWanted('pause')">维护中/暂停发布</i-button>
+                    <i-button i-content="{{countRunning}}" ng-click="toggleStatusWanted('running')">发布中</i-button>
+                  </exclusive-btn-group>
+                </div>
+              </div>
+              -->
+    </div>
+  </div>
+</div>

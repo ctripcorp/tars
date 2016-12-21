@@ -1,0 +1,108 @@
+<div ng-controller="com.ctrip.tars.packages.Controller" id="com-ctrip-tars-packages-Controller" style="overflow: hidden; position: relative;">
+
+  <div class="box ng-scope" style="margin-bottom: 0px;">
+    <div class="box-header container-fluid">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <h3 class="box-title">
+
+            <i class="fa fa-file-zip-o"></i>
+            <span>&nbsp;选择发布包</span>
+            <span style="font-size:12px;">『线上版本标识：{{ getLastSuccessfulBuilderVersion() }}』</span>
+
+          </h3>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+          <div class="box-pager navbar-form hidden-sm hidden-xs" role="pagination" style="margin: 0px -8px 0px 0px;">
+            <div class="form-group has-feedback" ng-controller="com.ctrip.tars.component.angular.pagination.Controller">
+              <pagination2></pagination2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-body container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }">
+          <!---->
+          <div id="builders-scroller" style="width: 100%; height: 100%; position: relative;">
+            <!--  -->
+            <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+
+              <div class="timeline-items">
+
+                <li-package ng-repeat="builder in builders track by builder.id" dataindex="{{ $index }}" dataid="{{builder.id}}"></li-package>
+                <!--dataname="{{builder.name}}" dataversion="{{builder.version}}" datastatus="{{builder.status}}" dataactive="{{builder.active}}" on-select="selectBulider(builder)"-->
+
+                <!--style="text-align: center; line-height: {{ size.height }}px; height: {{ size.height }}px;" -->
+                <div ng-if="builders.length <= 0" class="none-builders" style="color: #555; line-height: {{size.height}}px;height:{{size.height}}px;text-align:center;" ng-style="{ 'lineHeight': '{{size.height}}px','height': '{{size.height}}px','textAlign': 'center' }">
+                  <span>对不起，不存在任何可用的编译包。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ink="" data-toggle="tooltip" tooltip="" role="button" ng-disabled="false" class="pull-right yellow img-circle action-button action-button-56 img-circle action-button action-button-56" data-title="添加发布包" style="bottom: 20px; margin-right: -28px; right: 56px; font-size: 24px; position: absolute; z-index: 0;" ng-click="openPackageForm()" data-original-title="添加发布包" title="添加发布包">
+    <span class="ink shine" style="background: transparent; border-style: solid; top: 0px; left: 0px; opacity: 0;"></span>
+    <i class="fa fa-plus"></i>
+  </div>
+
+  <div class="package-form" style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 200px; opacity: 1; background: #fff;">
+    <i class="fa fa-times-circle-o" ng-click="closePackageForm()" style="position: absolute; right: 0px; top: 6px; font-size: 24px; background: #fff; color: #333;"></i>
+
+
+    <fieldset style="margin: 8px 8px;">
+      <legend>添加发布包</legend>
+      <form role="form" name="rollout-settings" class="container-fluid">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="name" style="text-align: right;">名称：</label>
+                </div>
+                <div class="col-md-8">
+                  <input class="form-control" name="name" placeholder="发布包名称" ng-model="packageForm.name">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="version" style="text-align: right;">版本：</label>
+                </div>
+                <div class="col-md-8">
+                  <input class="form-control" name="version" placeholder="发布包版本" ng-model="packageForm.version">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group row">
+                <div class="col-md-2">
+                  <label for="location" style="text-align: right;">location：</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" name="location" placeholder="location" ng-model="packageForm.location">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <a ink="" href="javascript:void(0)" class="btn btn-warning pull-right" role="button" ng-click="savePackage()" ng-disabled="!validatePackageForm()" style="margin: 8px; border-radius: 0px;"><i class="fa fa-check"></i> &nbsp;&nbsp; 添加</a>
+
+              <a ink="" href="javascript:void(0)" class="btn btn-default pull-right" role="button" ng-click="closePackageForm()" ng-disabled="false" style="margin: 8px; border-radius: 0px;"><i class="fa fa-times"></i> &nbsp;&nbsp; 取消</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</div>

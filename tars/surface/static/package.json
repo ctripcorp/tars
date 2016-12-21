@@ -1,0 +1,41 @@
+{
+  "name": "tars",
+  "description": "tars surface",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "gulp": "^3.8.11",
+    "less": "^2.5.1",
+    "del": "^1.1.1",
+    "gulp-bower": "0.0.10",
+    "gulp-bower-normalize": "^1.0.6",
+    "gulp-concat": "^2.5.2",
+    "gulp-jsbeautifier": "0.0.8",
+    "gulp-jshint": "^1.10.0",
+    "gulp-json-editor": "^2.2.1",
+    "gulp-less": "^3.0.3",
+    "gulp-livereload": "^3.8.0",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-minify-html": "^1.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "config-file": "^0.3.1",
+    "main-bower-files": "^2.7.0"
+  },
+  "engines": {
+    "node": "^0.12.2",
+    "npm": "^2.7.4"
+  },
+  "group": "com.ctrip",
+  "artifact": "tars",
+  "authors": [
+    "lico"
+  ],
+  "license": "MIT",
+  "debug": true,
+  "skin": "default",
+  "version": "1.2.26",
+  "target": "local"
+}

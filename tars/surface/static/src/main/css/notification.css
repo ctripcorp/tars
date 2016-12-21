@@ -1,0 +1,103 @@
+@charset 'utf-8';
+.cbp-spmenu {
+  position: relative;
+  font-family: "Microsoft YaHei", "Comic Sans MS", cursive;
+  color: #fff;
+  overflow: visible;
+  margin: 0px;
+  border-radius: 0px;
+  top: 0px;
+}
+.cbp-spmenu h3 {
+  color: #fff;
+  margin: 0;
+  font-weight: 100;
+  font-size: 16px;
+  padding: 0px 24px;
+  line-height: 24px;
+  text-align: center;
+  display: inline;
+}
+.cbp-spmenu p {
+  display: inline;
+  line-height: 24px;
+}
+.cbp-spmenu .cbp-spmenu-row {
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 100;
+  text-decoration: none;
+  line-height: 24px;
+  text-align: center;
+  padding: 3px 32px;
+  height: 32px;
+  position: relative;
+}
+.cbp-spmenu .cbp-spmenu-row:active {
+  color: #fff;
+}
+.cbp-spmenu-horizontal {
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+}
+/* Horizontal menu that slides from the top or bottom */
+.cbp-spmenu-top {
+  top: -32px;
+}
+.cbp-spmenu-top.cbp-spmenu-open {
+  top: 0px;
+}
+.cbp-spmenu-bottom {
+  bottom: -32px;
+}
+.cbp-spmenu-bottom.cbp-spmenu-open {
+  bottom: 0px;
+}
+/* Push classes applied to the body */
+.cbp-spmenu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+/* Transitions */
+.cbp-spmenu,
+.cbp-spmenu-push {
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.cbp-spmenu-remove {
+  opacity: 0.72;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  cursor: pointer;
+}
+.cbp-spmenu-remove:before {
+  content: 'x';
+  color: #fff;
+  font-weight: 100;
+  line-height: 32px;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+}
+.skin-blue .cbp-spmenu {
+  background: #096F71;
+}
+.skin-blue .cbp-spmenu .cbp-spmenu-row:hover,
+.skin-blue .cbp-spmenu .cbp-spmenu-row:active {
+  background: #075859;
+}
+.skin-gray .cbp-spmenu {
+  background-color: #e51c23;
+}
+.skin-gray .cbp-spmenu .cbp-spmenu-row:hover,
+.skin-gray .cbp-spmenu .cbp-spmenu-row:active {
+  background: #d01716;
+}

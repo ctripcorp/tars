@@ -1,0 +1,86 @@
+<div class="wrapper" ng-controller="com.ctrip.tars.app.Controller">
+  <div ng-controller="com.ctrip.tars.deployments.serial.Controller">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-xs hidden-sm" style="padding-right: 8px; padding-left: 8px;">
+          <ng-include src="'template!apps.html'" init-variable=""></ng-include>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="margin-top: 16px; padding: 8px 16px 24px 8px; position: relative;">
+          <div class="flat-card cascade cascade-positive"></div>
+          <div class="flat-card cascade cascade-negative"></div>
+          <div class="flat-card bg-teal-gradient" style="position: relative;">
+            <div class="box" style="background-color: transparent; margin-bottom: 0px;">
+              <div class="box-header container-fluid">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4 class="box-title">
+                      <ol class="breadcrumb">
+                        <li>Tars</li>
+                        <li ng-repeat="crumb in breadcrumb">{{ crumb.text }}</li>
+                      </ol>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="box-body">
+                <ng-include src="'template!group.html'" init-variable=""></ng-include>
+              </div>
+            </div>
+            <countdown></countdown>
+            <cover></cover>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+			<table width="100%" height="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td style="width: 360px; min-width: 360px; max-width: 360px;">
+						<div style="width: 100%; height: 100%; position: relative;">
+							<div id="multi-pane" style="width: 100%; background: #fff; position: absolute; bottom: 0px; height: 322px;">
+				      		</div>
+				      		<div class="flat-card" style="background: #fff; position: absolute; top: 4px; left: 16px; right: 16px; bottom: 4px;">
+								<div class="box" style="margin-bottom: 0px;">
+						          <div class="box-header container-fluid">
+					                <div class="row">
+					                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					                    <h3 class="box-title">
+					                      <i class="fa fa-th"></i>
+					                      <span>&nbsp;应用列表</span>
+					                    </h3>
+					                  </div>
+					                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<div class="box-sorter navbar-form" role="sorter">
+					                      <div class="btn-group btn-group-sm">
+					                        <button style="margin: 4px;" class="btn btn-filter active" role="console-sorts" ng-click="sorter('log_timestamp')">应用名&nbsp;
+					                          <i class="fa fa-arrow-down" ng-if="sorters.sort_order=='desc'"></i>
+					                          <i class="fa fa-arrow-up" ng-if="sorters.sort_order=='asc'"></i>
+					                        </button>
+					                      </div>
+					                    </div>
+					                  </div>
+						            </div>
+						          </div>
+	        					</div>
+	        					<div id="multi-apps-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }">
+						          <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+						            <div class="list-group">
+						              <multi-app ng-repeat="app in apps"></multi-app>
+
+						              <div ng-if="apps.length <= 0" class="shortcut gs-w col-sm-12 col-xs-12 shortcut-0" style="height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+						                对不起，没有查询到任何应用。</div>
+						            </div>
+						          </div>
+						        </div>
+						    </div>
+		        		</div>
+					</td>
+					<td>
+						<ng-include src="'template!app.html'" init-variable=""></ng-include>
+					</td>
+				</tr>
+			</table>-->
+  </div>
+</div>

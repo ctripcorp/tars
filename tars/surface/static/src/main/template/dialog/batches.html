@@ -1,0 +1,16 @@
+<div id="window--1" level="-1" initial="false" class="au-dialog-panel" style="z-index: 10001; display:none;">
+  <div class="au-dialog-view" style="z-index: 10002;">
+    <div class="au-dialog-view-layout">
+      <!-- batches start -->
+      <div id="batches-dialog" ng-controller="com.ctrip.tars.batches.Controller">
+        <tab-batch ng-if="batches.length > 0"></tab-batch>
+        <div ng-if="batches.length <= 0" style="color: #555; border: 0px; height: {{ size.height + 152 }}px; text-align: center; line-height: {{ size.height + 152 }}px;">
+          <span>对不起，当前没有数据供查看。 </span>
+        </div>
+        <!-- batchSetting end -->
+      </div>
+    </div>
+  </div>
+  <div class="au-dialog-close" style="z-index: 10009;"></div>
+  <em class="au-dialog-scroll-top" role="scroll-top" style="z-index: 10009;"><i class="glyphicon "></i></em>
+</div>

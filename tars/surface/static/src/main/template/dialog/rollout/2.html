@@ -1,0 +1,409 @@
+<div class="box ng-scope" style="margin-bottom: 0px;">
+  <div class="box-header">
+    <h3 class="box-title"><i class="fa fa-paste"></i>&nbsp;填写发布配置</h3>
+  </div>
+  <div class="box-body container-fluid mscrollbar" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }">
+    <div class="row">
+      <div class="col-md-12">
+        <label>应用名称：</label>{{ app.name }} （ AppId：{{ app.id }} ）
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>共发布至：</label>{{ getServersCount() }} 台服务器
+      </div>
+    </div>
+    <div class="row">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 bubbles-origin">
+
+            <!--
+
+                        <fieldset style="margin: 8px 0px;" ng-mouseover="settings.setActive($event,'regulars')">
+                            <legend>固定策略</legend>
+                            <h5>关键应用：</h5>
+                            <ul style="list-style: circle;">
+                                <li>单个批次中拉出集群的服务器数量不得超过集群服务器总数的50%</li>
+                                <li>等待XMon监控辅助，Rolling过程中需暂停一次</li>
+                                <li>点火失败自动重试三次仍不成功后，暂停发布（中止当前批次剩余服务器以及后续未执行批次服务器的rolling执行）</li>
+                                <li>Rolling失败的数量超过25%或可配置的阀值后，停止发布</li>
+                            </ul>
+                        </fieldset>
+
+                        -->
+
+            <fieldset style="margin: 8px 1px;">
+              <legend>可配置策略</legend>
+              <form role="form" name="rollout-settings" class="container-fluid">
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'group')">
+                  <div class="col-md-4">
+                    <label for="group">group：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('group')]">
+                    <select class="form-control" name="group" placeholder="批次设置" ng-model="settings.values.group" ng-class="{false:'error'}[settings.isValid('group')]" ng-focus="settings.setActive($event,'group')" ng-change="settings.validate('group');" ng-disabled="true" ng-options="group.name for group in groups">
+                      <!--<option selected="" value="">请选择</option>-->
+                      <!--<option ng-repeat="group in groups" value="{{ group.id }}">{{ group.name }}</option>-->
+                    </select>
+                  </div>
+                  <div ng-if="!settings.isValid('group')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('group') }}
+                  </div>
+                </div>
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'ignoreVerifyResult')">
+                  <div class="col-md-4">
+                    <label for="ignoreVerifyResult">忽略点火：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('ignoreVerifyResult')]">
+                    <input type="checkbox" class="toggle form-control" id="ignoreVerifyResult" name="ignoreVerifyResult" ng-model="settings.values.ignoreVerifyResult" ng-focus="settings.setActive($event,'ignoreVerifyResult')" ng-change="settings.validate('ignoreVerifyResult')">
+                    <label for="ignoreVerifyResult" style="width: 56px;"></label>
+                  </div>
+                  <div ng-if="!settings.isValid('ignoreVerifyResult')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('ignoreVerifyResult') }}
+                  </div>
+                </div>
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'restartAppPool')">
+                  <div class="col-md-4">
+                    <label for="restartAppPool">重启应用程序池：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('restartAppPool')]">
+                    <input type="checkbox" class="toggle form-control" id="restartAppPool" name="restartAppPool" ng-model="settings.values.restartAppPool" ng-focus="settings.setActive($event,'restartAppPool')" ng-change="settings.validate('restartAppPool')">
+                    <label for="restartAppPool" style="width: 56px;"></label>
+                  </div>
+                  <div ng-if="!settings.isValid('restartAppPool')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('restartAppPool') }}
+                  </div>
+                </div>
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'batchPattern')">
+                  <!--  -->
+                  <div class="col-md-4">
+                    <label for="batchPattern">单个批次拉出上限：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('batchPattern')]">
+                    <!--
+                                        <select class="form-control" name="batchPattern" placeholder="批次设置"
+                                            ng-model="settings.values.batchPattern"
+                                            ng-class="{false:'error'}[settings.isValid('batchPattern')]"
+                                            ng-focus="settings.setActive($event,'batchPattern')"
+                                            ng-change="settings.validate('batchPattern')">
+
+                                            <option selected="" value="25%+25%+25%+25%">25%+25%+25%+25%（推荐）</option>
+                                            <option value="20%+30%+50%">20%+30%+50%</option>
+                                            <option value="10%+20%+20%+20%+20%+10%">10%+20%+20%+20%+20%+10%</option>
+                                            <option value="自定义批次">自定义批次</option>
+                                        </select>
+                                        -->
+                    <input ion-range type="number" class="form-control" name="batchPattern" grid="false" min="0" max="50" step="5" postfix="%" placeholder="单个批次拉出上限（0%~50%）" ng-model="settings.values.batchPattern" ng-focus="settings.setActive($event,'batchPattern')" ng-change="settings.validate('batchPattern'); previewBatches();">
+                  </div>
+                  <div ng-if="!settings.isValid('batchPattern')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('batchPattern') }}
+                  </div>
+                </div>
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'pauseTime')">
+                  <!--  -->
+                  <div class="col-md-4">
+                    <label for="pauseTime">批次间等待时间：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('pauseTime')]">
+                    <input ion-range type="number" class="form-control" name="pauseTime" min="0" max="30" step="1" postfix="分钟" placeholder="批次间等待时间（0~30分钟）" ng-model="settings.values.pauseTime" ng-focus="settings.setActive($event,'pauseTime')" ng-change="settings.validate('pauseTime')">
+                  </div>
+                  <div ng-if="!settings.isValid('pauseTime')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('pauseTime') }}
+                  </div>
+                </div>
+
+                <!--
+                                <div class="form-group row" ng-mouseover="settings.setActive($event,'waitForXmon')">
+                                    <div class="col-md-4">
+                                        <label for="waitForXmon">等待XMon监控辅助？</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input type="radio" name="waitForXmon" ng-value="1" ng-model="settings.values.waitForXmon" ng-focus="settings.setActive($event,'waitForXmon')"><span>是</span>&nbsp;
+
+                                                    <input type="radio" name="waitForXmon" ng-value="0" ng-model="settings.values.waitForXmon" ng-focus="settings.setActive($event,'waitForXmon')"><span>否</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div ng-show="settings.getValue('waitForXmon') == 1" class="col-md-12">
+                                                    <div class="input-text2">Rolling至</div>
+
+                                                    <input type="number" class="form-control" max="25" min="0" ng-model="settings.values.xmonThreshold" step="1" name="xmonThreshold" placeholder="" style="width: 72px; float: left;">
+
+                                                    <div class="input-text2">%</div>
+                                                    <div class="input-text2">后等待</div>
+
+                                                    <input type="number" class="form-control" max="60" min="0" ng-model="settings.values.xmonWaittime" step="1" name="xmonWaittingtime" placeholder="" style="width: 72px; float: left;">
+
+                                                    <div class="input-text2">分钟</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                <!--
+                                <div class="form-group row" ng-mouseover="settings.setActive($event,'stopThreshold')">
+                                    <div class="col-md-4">
+                                        <label for="stopThreshold">Rolling失败数量超过</label>
+                                    </div>
+                                    <div class="col-md-8" style="padding-right: 168px;">
+                                        <input type="number" class="form-control" max="25" min="0" ng-model="settings.values.stopThreshold" step="1" name="stopThreshold" placeholder="" ng-focus="settings.setActive($event,'stopThreshold')">
+
+                                        <div class="input-desc">
+                                            <b>%</b>&nbsp;后停止发布（Z&lt;=25）
+                                        </div>
+                                    </div>
+                                </div>
+                                 -->
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'startupTimeout')">
+                  <div class="col-md-4">
+                    <label for="startupTimeout">应用启动超时时间：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('startupTimeout')]">
+                    <input ion-range type="number" class="form-control" name="startupTimeout" min="3" max="180" step="1" postfix="分钟" placeholder="应用启动超时时间（0~180分钟）" ng-model="settings.values.startupTimeout" ng-focus="settings.setActive($event,'startupTimeout')" ng-change="settings.validate('startupTimeout')">
+                    <!--<div class="input-unit">分钟</div>-->
+                  </div>
+                  <div ng-if="!settings.isValid('startupTimeout')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('startupTimeout') }}
+                  </div>
+                </div>
+
+                <!--
+
+                                <div class="form-group row" ng-mouseover="settings.setActive($event,'verifyTimeout')">
+                                    <div class="col-md-4">
+                                        <label for="verifyTimeout">点火验证耗时：</label>
+                                    </div>
+                                    <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('verifyTimeout')]">
+                                        <input type="number" class="form-control" name="verifyTimeout" placeholder="点火验证耗时（0~5分钟）" style="padding-right: 36px;" ng-model="settings.values.verifyTimeout" ng-focus="settings.setActive($event,'verifyTimeout')" ng-change="settings.validate('verifyTimeout')">
+
+                                        <!--<div class="input-unit">分钟</div>-->
+                <!--
+
+                                    </div>
+                                    <div ng-if="!settings.isValid('verifyTimeout')" class="col-md-12 errormsg">
+                                        {{ settings.getValidMsg('verifyTimeout') }}
+                                    </div>
+                                </div>
+                                -->
+
+                <!--
+                                <div class="form-group row" ng-mouseover="settings.setActive($event,'validateFailAction')" >
+                                    <div class="col-md-4">
+                                        <label for="validateFailAction">点火失败处理方案：</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="validateFailAction" ng-model="settings.values.validateFailAction" placeholder="点火失败处理方案"
+                                                ng-focus="settings.setActive($event,'validateFailAction')">
+                                            <option value="放弃点火，回退应用">放弃点火，回退应用</option>
+                                            <option value="放弃点火，拉入集群">放弃点火，拉入集群</option>
+                                            <option value="重试点火，点火失败不拉入集群">重试点火，点火失败不拉入集群</option>
+                                            <option value="重试点火，点火失败仍拉入集群">重试点火，点火失败仍拉入集群</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                -->
+                <!--
+                                <div class="form-group row" ng-mouseover="settings.setActive($event,'rollbackVersion')">
+                                    <div class="col-md-4">
+                                        <label for="rollbackVersion">回退版本选择：</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name="rollbackVersion" ng-model="settings.values.rollbackVersion" placeholder="回退版本选择" ng-focus="settings.setActive($event,'rollbackVersion')">
+                                            <option value="Build ID Release Time（当前版本）">Build ID Release Time（当前版本）</option>
+                                            <option value="Build ID Release Time (History 1) ">Build ID Release Time (History 1)</option>
+                                            <option value="Build ID Release Time (History 2) ">Build ID Release Time (History 2)</option>
+                                            <option value="Build ID Release Time (History 3) ">Build ID Release Time (History 3)</option>
+                                            <option value="Build ID Release Time (History 4) ">Build ID Release Time (History 4)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                 -->
+
+                <div class="form-group row" ng-mouseover="settings.setActive($event,'manual')">
+                  <div class="col-md-4">
+                    <label for="manual">手动按批次执行rollout：</label>
+                  </div>
+                  <div class="col-md-8" ng-class="{ false: 'errorarea' }[settings.isValid('manual')]">
+                    <input type="checkbox" class="toggle form-control" id="manual" name="manual" ng-model="settings.values.manual" ng-focus="settings.setActive($event,'manual')" ng-change="settings.validate('manual')">
+                    <label for="manual" style="width: 56px;"></label>
+                  </div>
+                  <div ng-if="!settings.isValid('manual')" class="col-md-12 errormsg">
+                    {{ settings.getValidMsg('manual') }}
+                  </div>
+                </div>
+              </form>
+            </fieldset>
+            <div class="summary-formula" ng-mouseover="settings.setActive($event,'formula')">
+              上述配置在发布成功的情况下，生产Rolling过程约需XX分钟</div>
+          </div>
+          <div class="col-md-4">
+            <ul class="bubbles bubbles-target" style="position: relative; top: {{settings.getPosition().top}}px;" ng-style="{ 'top':'{{settings.getPosition().top}}px' }">
+              <li class="bubble" ng-show="settings.isActive('regulars')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>关键应用</h3>
+                    <p>由应用重要性、类型等发布对象本身的属性，结合OPS、架构的一些规范而确定的固化策略。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('group')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>group</h3>
+                    <p>发布至对应的group。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('batchPattern')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>单个批次拉出上限</h3>
+                    <p>为保证发布过程中，服务器集群仍能正常提供服务，分批次对集群内的服务器进行Rolling，单个批次中拉出集群的服务器数量不得超过集群服务器总数的<b>50%</b>（如有堡垒机，<b>批次划分计算针对除堡垒机以外的机器进行</b>）。
+                    </p>
+                    <p>
+                      注： 如果选择<b>0%</b>，代表<b>每一批次有且只有一台服务器</b>。
+                    </p>
+                    <p ng-if="settings.isValid('batchPattern')">
+                      批次情况预览：<b style="word-break: break-word;">{{ getPreviewBatches(this) }}</b>
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+
+              <li class="bubble" ng-show="settings.isActive('pauseTime')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>批次间等待时间</h3>
+                    <p>上一批次Rolling完成至下一批次Rolling开始，两者间的等待时间。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('ignoreVerifyResult')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>忽略点火</h3>
+                    <p>忽略点火结果，继续发布。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('restartAppPool')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>重启应用程序池</h3>
+                    <p>仅对.net有效，<b>默认会进行回收</b>，只有特殊情况才需要重启。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('waitForXmon')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>等待XMon监控辅助</h3>
+                    <p>Rolling完成的服务器数量>=25%*集群所有服务器数量后，自动暂停剩余服务器发布，Y分钟后，继续发布。</p>
+                  </div>
+                </div>
+              </li>
+
+
+              <li class="bubble" ng-show="settings.isActive('stopThreshold')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>Rolling失败数量阀值</h3>
+                    <p>Rolling失败的服务器数量>=Z%*集群所有服务器数量后，中止当前批次剩余服务器以及后续未执行批次服务器的rollout执行，rollout失败。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('startupTimeout')">
+                <div class="content left bottom">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>应用启动超时时间</h3>
+                    <p>运行启动脚本后，等待应用实际被启用所需的时间（包括缓存重建耗时等），超时未能成功启动的，点火失败。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('manual')">
+                <div class="content left top">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>手动按批次执行rollout</h3>
+                    <p>手动<b>按批次</b>进行rollout操作。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="bubble" ng-show="settings.isActive('verifyTimeout')">
+                <div class="content left bottom">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>点火验证耗时</h3>
+                    <p>调用应用点火URL（列表）并等待验证结果返回所需耗时。</p>
+                  </div>
+                </div>
+              </li>
+              <!-- 
+							<li class="bubble" ng-show="settings.isActive('validateFailAction')">
+								<div class="content left bottom">
+									<div class="before"></div>
+									<div class="content-inner">
+										<h3>点火失败处理方案</h3>
+										<p></p>
+									</div>
+								</div>
+							</li>
+ -->
+              <li class="bubble" ng-show="settings.isActive('rollbackVersion')">
+                <div class="content left bottom">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>回退版本</h3>
+                    <p>确认当发布异常时，可用于回退的版本，NOC或SWAT人员可一键回退该工作版本。</p>
+                  </div>
+                </div>
+              </li>
+
+
+              <li class="bubble" ng-show="settings.isActive('formula')">
+                <div class="content left bottom">
+                  <div class="before"></div>
+                  <div class="content-inner">
+                    <h3>生产Rolling时间计算公式</h3>
+                    <p>（P-1）X+Y+Q（M+N+O）
+                      <br> 注：
+                      <br> 1. 按成功发布计算，不考虑各类失败等异常情况； 2. O为每台服务器工作目录切换所需耗时。
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{% load i18n %}
+<style>
+.odd {
+    background-color:#f5f5f5;
+}
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>{% trans "Setting" %}</th>
+            <th>{% trans "Value" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for name, value in settings.items %}
+            <tr class="{% cycle 'odd' 'even' %}">
+                <td>{{ name }}</td>
+                <td><code>{{ value|pprint }}</code></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

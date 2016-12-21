@@ -1,0 +1,1 @@
+$import("js.awt.Text"),Class.forName({name:"class js.awt.TextField extends js.awt.Text","public TextField":function(){}});

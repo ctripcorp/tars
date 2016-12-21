@@ -1,0 +1,47 @@
+db:
+  image: mysql:5.7
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=my-secret-pw
+    - MYSQL_DATABASE=tars
+    - MYSQL_USER=tars
+    - MYSQL_PASSWORD=test1234
+    - MYSQL_CHARSET=utf8
+
+backend:
+  image: redis
+  ports:
+    - "6379:6379"
+
+es:
+  image: elasticsearch:5
+  ports:
+    - '9200:9200'
+
+worker:
+  build: .
+  # command: python manage.py celery -A roll_engine worker --autoreload -l info --settings=tars.settings.docker
+  command: celery worker -A roll_engine -l info
+  volumes:
+    - .:/code
+  environment:
+    - C_FORCE_ROOT=1
+    - DJANGO_SETTINGS_MODULE=tars.settings.docker
+  links:
+    - backend
+    - db
+    - es
+
+web:
+  build: .
+  command: python manage.py runserver 0.0.0.0:8000 --settings=tars.settings.docker
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
+    - backend
+    - es
+

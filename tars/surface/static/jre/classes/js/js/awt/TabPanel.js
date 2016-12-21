@@ -1,0 +1,1 @@
+$import("js.awt.Panel"),Class.forName({name:"class js.awt.GridPanel extends js.awt.Panel","public GridPanel":function(){}});

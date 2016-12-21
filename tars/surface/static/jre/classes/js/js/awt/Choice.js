@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"class js.awt.Choice extends js.awt.Component","public Choice":function(){}});

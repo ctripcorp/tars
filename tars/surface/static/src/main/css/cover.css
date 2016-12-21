@@ -1,0 +1,127 @@
+@charset 'utf-8';
+.cover {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  font-size: 1em;
+  color: #ffffff;
+}
+.cover .shadow {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  filter: alpha(opacity=64);
+  opacity: 0.64;
+  background-color: #000;
+}
+.cover .content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  margin-top: 15%;
+  color: #fff;
+  background: transparent;
+}
+.cover .title {
+  font-size: 3em;
+  text-align: center;
+  white-space: nowrap;
+  padding: 8px;
+  margin-top: 24px;
+  display: block;
+}
+.cover .desc {
+  font-size: 1em;
+  text-align: left;
+  white-space: nowrap;
+  margin-top: 24px;
+  padding: 8px;
+  display: block;
+}
+.cover .desc p {
+  margin-left: 16px;
+  color: #fff;
+}
+.cover .tips {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.cover .tip {
+  position: absolute;
+}
+.cover .arrow-top-right {
+  background-image: url('../images/arrow-top-right.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-bottom-right {
+  background-image: url('../images/arrow-bottom-right.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-top-left {
+  background-image: url('../images/arrow-top-left.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-bottom-left {
+  background-image: url('../images/arrow-bottom-left.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-top-right2 {
+  background-image: url('../images/arrow-top-right2.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-bottom-right2 {
+  background-image: url('../images/arrow-bottom-right2.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-top-left2 {
+  background-image: url('../images/arrow-top-left2.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .arrow-bottom-left2 {
+  background-image: url('../images/arrow-bottom-left2.png');
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 48px;
+}
+.cover .summary {
+  max-width: 256px;
+}
+.cover-ref-z {
+  z-index: 30000!important;
+}
+.cover-ref {
+  border: 4px dashed #e51c23!important;
+}
+.welcome {
+  z-index: 9999!important;
+}
+.welcome-ref {
+  z-index: 60000!important;
+  border: 4px dashed #e51c23!important;
+  pointer-events: none;
+}
+.welcome-ref-pos {
+  position: relative!important;
+}
+.welcome-ref-z {
+  z-index: 0!important;
+}

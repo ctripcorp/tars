@@ -1,0 +1,24 @@
+<div class="wrapper parallel" id="com-ctrip-tars-app-Controller" ng-controller="com.ctrip.tars.app.Controller">
+  <sidebar padding="8" split="25">
+    <sidebar-left>
+      <ng-include src="'template!apps.html'" init-variable=""></ng-include>
+    </sidebar-left>
+    <sidebar-center>
+      <div class="wrapper" ng-controller="com.ctrip.tars.deployments.parallel.Controller">
+        <!--
+        <div class="flat-card cascade cascade-positive"></div>
+        <div class="flat-card cascade cascade-negative"></div>
+        -->
+        <concern class="bg-teal-gradient" style="position: relative;">
+          <div class="box" style="background-color: transparent; margin-bottom: 0px;">
+            <div class="box-body">
+              <ng-include src="'template!groups.html'" init-variable=""></ng-include>
+            </div>
+          </div>
+          <countdown></countdown>
+          <cover></cover>
+        </concern>
+      </div>
+    </sidebar-center>
+  </sidebar>
+</div>

@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"class js.awt.Tree extends js.awt.Component","public Tree":function(){}});

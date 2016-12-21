@@ -1,0 +1,56 @@
+---
+# Path where the code to deploy is
+ansistrano_deploy_from: "{{ playbook_dir }}"
+
+# Path where the code must be deployed to
+ansistrano_deploy_to: "/var/www/my-app"
+
+# Folder name for the releases
+ansistrano_version_dir: "releases"
+
+# Softlink name for the current release
+ansistrano_current_dir: "current"
+
+# Current directory deployment strategy
+ansistrano_current_via: "symlink"
+
+# Shared paths to symlink to release dir
+ansistrano_shared_paths: []
+
+# Shared files to symlink to release dir
+ansistrano_shared_files: []
+
+# Number of releases to keep in your hosts, if 0, unlimited releases will be kept
+ansistrano_keep_releases: 0
+
+# Deployment strategies variables
+
+# Due to runtime variable evaluation, the ansistrano_deploy_via default is actually
+# defined in update-code.yml instead of this file. You can still override it in your
+# playbook as needed.
+# ansistrano_deploy_via: "rsync"
+
+## GIT pull strategy
+ansistrano_git_repo: git@github.com:USERNAME/REPO.git
+ansistrano_git_branch: master
+ansistrano_git_repo_tree: ""
+ansistrano_git_identity_key_path: ""
+
+## RSYNC push strategy
+ansistrano_rsync_extra_params: ""
+## put user@ for the remote paths. If you have a custom ssh config to define
+## the remote user for a host that does not match the inventory user,
+## you should set this parameter to "no".
+ansistrano_rsync_set_remote_user: yes
+
+## Download strategy
+ansistrano_get_url: https://github.com/someproject/somearchive.tar.gz
+
+## S3 get strategy
+ansistrano_s3_bucket: s3bucket
+ansistrano_s3_object: s3object.tgz
+ansistrano_s3_region: eu-west-1
+
+## Sends anonymous stats to the www.ansistrano.com servers
+## You can disallow it by just setting this parameter to "no" in your playbook
+ansistrano_allow_anonymous_stats: yes

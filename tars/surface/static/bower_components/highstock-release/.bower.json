@@ -1,0 +1,19 @@
+{
+  "name": "highstock",
+  "version": "2.1.10",
+  "main": [
+    "highstock.js",
+    "highcharts-more.js",
+    "modules/exporting.js"
+  ],
+  "homepage": "https://github.com/highslide-software/highstock-release",
+  "_release": "2.1.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.10",
+    "commit": "1454e77c2130309f6ffe04cd549cbaf3c4ee00a7"
+  },
+  "_source": "https://github.com/highslide-software/highstock-release.git",
+  "_target": "~v2.1.5",
+  "_originalSource": "highstock-release"
+}

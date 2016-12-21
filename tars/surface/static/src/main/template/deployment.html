@@ -1,0 +1,189 @@
+<div class="box-body border-radius-none" style="height: 100%; overflow: hidden;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="monitor" ng-class="{false:'col-lg-9 col-md-8 col-sm-7 col-xs-12', true:'col-lg-10 col-md-9 col-sm-8 col-xs-12'}[isSingle()]" style="padding: 0px 8px 0px 8px;">
+
+        <div ng-if="isSingle()">
+          <plumb></plumb>
+          <xmon ng-show="ratio < 10"></xmon>
+        </div>
+
+        <div ng-if="!isSingle()">
+          <i-flow></i-flow>
+        </div>
+      </div>
+      <div ng-if="isSingle()" class="hidden-lg hidden-md hidden-sm col-xs-1"></div>
+      <div ng-class="{false:'col-lg-3 col-md-4 col-sm-5 col-xs-12', true:'col-lg-2 col-md-3 col-sm-4 col-xs-10'}[isSingle()]" style="padding: 0px 8px 0px 8px;">
+        <div class="app-info">
+          <div class="nav-tabpanels reverse" style="border-radius: 0px;">
+            <div class="tab-content" style="border-bottom: 0px none;">
+              <div class="tab-pane active" style="overflow: hidden; position: relative; white-space: normal; word-break: break-word; letter-spacing: -1px;">
+                <div class="tab-pane-top" ng-style="{true: {'height': '96px'}, false: {'height': '64px'} }[isSingle() && ratio <= 5]" style="overflow: hidden; border-top-right-radius: 0px; border-top-left-radius: 0px;">
+                  <div class="app-name animate text-overflow" ng-if="isSingle()" tween-show="ratio <= 5" duration="0.5" y="true">{{ app.name | short2 }}</div>
+                </div>
+                <div class="tab-pane-bottom" style="overflow: hidden; height: auto; min-height: 164px;">
+
+                  <!--
+                  <div class="app-attrs"><span>Type：</span><b>{{contribution.warZone.name}}</b>
+                  </div>
+                  -->
+
+                  <div ng-if="isSingle()" class="app-attrs animate" tween-show="app.id != null && ratio <= 1" duration="0.5" y="true">
+                    <span>AppId：</span><b>{{app.id}}</b>
+                  </div>
+
+                  <!--
+                  <div ng-if="isSingle()" class="app-attrs animate" tween-show="deployment.group != null && ratio <= 3" duration="0.5" y="true">
+                    <span>Group： </span><b>{{ deployment.group }}</b>
+                  </div>
+                  -->
+
+                  <div ng-if="isSingle()" class="app-attrs animate" tween-show="deployment.category != null && ratio <= 2.5" duration="0.5" y="true">
+                    <span>Category： </span><b>{{ deployment.category }}</b>
+                  </div>
+
+                  <div class="app-attrs animate" tween-show="deployment.id != null && ratio <= 4" duration="0.5" y="true">
+                    <span>Deploy： </span><b>{{ deployment.id }}{{ contribution.getTacticsName(deployment.flavor) }}</b>
+                  </div>
+
+                  <div class="app-attrs bage-container" style="padding: 3px 0px;">
+                    <div class="badge badge-default" style="padding: 4px;">{{ contribution.getBriefing() }}</div>
+                  </div>
+
+                  <div class="app-status-toolbar" style="overflow: hidden; width: 100%; height: 48px; padding: 4px 0px 4px 0px;">
+                    <!--
+                    <div class="img-circle action-button action-button-{{command.size}} app-tools" ng-repeat="command in contribution.getGroupArmy() track by $index" ng-style="{ 'left': '{{command.left}}', 'marginLeft': '{{command.marginLeft}}' }" title="{{command.title}}" style="left: {{command.left}}; margin-left: {{command.marginLeft}};" ng-click="command.click(this, $event)">
+                      <i class="fa fa-{{command.icon}}"></i>
+                    </div>
+                    -->
+
+                    <div ng-repeat="command in contribution.getGroupArmy() track by command._hashCode">
+
+                      <action class="app-tools" ng-if="command.waiting != true" datasize="{{command.size}}" dataleft="{{command.left}}" datamarginleft="{{command.marginLeft}}" datatitle="{{command.title}}" dataicon="{{command.icon}}" datadisabled="{{ command.disabled }}" dataeffect="{{ command.effect }}" on-handle="command.click(this, $event)"></action>
+
+                      <!--
+                        <div id="{{command.status.battle}}" ng-if="command.waiting == true" class="spinner light" style="width: 32px;height: 32px;" ng-init="command.init(command)">
+                          <div class="spinner-container container-1"><div class="circle-1"></div><div class="circle-2"></div><div class="circle-3"></div><div class="circle-4"></div></div><div class="spinner-container container-2"><div class="circle-1"></div><div class="circle-2"></div><div class="circle-3"></div><div class="circle-4"></div></div><div class="spinner-container container-3"><div class="circle-1"></div><div class="circle-2"></div><div class="circle-3"></div><div class="circle-4"></div></div>
+                        </div>
+                      -->
+
+                      <waiting ng-if="command.waiting == true" datasize="{{command.size}}" dataleft="{{command.left}}" datamarginleft="{{command.marginLeft}}" datatitle="{{command.status.battle}}" dataicon="{{command.icon}}" on-handle="command.click(this, $event)"></waiting>
+
+                    </div>
+
+                    <!-- 
+                        <div class="img-circle action-button action-button-40 app-tools" style="left: 32px;"><i class="fa fa-backward"></i></div>
+                        <div class="img-circle action-button action-button-40 app-tools" style="left: 50%;margin-left:-20px;"><i class="fa fa-pause"></i></div>
+                        <div class="img-circle action-button action-button-40 app-tools" style="right: 32px;"><i class="fa fa-forward"></i></div>
+                         -->
+                  </div>
+                </div>
+
+                <!--
+                <div class="tab-pane-circle">
+                    <div id="high-chart-app-servers-status" style="width: 128px;height: 128px;position: relative;top: -16px;left: -16px;"></div>
+                </div>
+                -->
+                <div class="tab-pane-circle" ng-style="{true: {'top': '96px'}, false: {'top': '64px'} }[isSingle() && ratio <= 5]" ng-controller="com.ctrip.tars.component.angular.percent.Controller">
+                  <span class="easypie" easypiechart ng-init="" percent="percent" options="options">
+                    <span class="percent" ng-bind="percent" ng-if="origin != true"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ul class="nav nav-tabs tab-header">
+              <li class="active" style="width: 100%;"><a href="javascript:void(0)" style="padding: 6px 0px 3px 0px;">操作</a></li>
+            </ul>
+          </div>
+
+          <!-- 
+          <tabpanel datatype="reverse" dataclasses="flat-card">
+            <tabcontents>
+              
+             
+              <tabcontent>
+                <div class="note">
+                  <h3>详细信息一览</h3>
+                  <ul>
+                    <li>应用名称(英文):
+                      <p>{{ app.name | short2 }}</p>
+
+                    </li>
+                    <li>重要性:
+                      <p>{{ app.importance }}</p>
+                    </li>
+                    <li>版本:
+                      <p>{{ app.appVersion }}</p>
+                    </li>
+                    <li>应用描述/备注:
+                      <br/>
+                      <p>{{ app.description }}</p>
+                    </li>
+                  </ul>
+                </div>
+              </tabcontent>
+              <tabcontent>
+                <div class="note">
+                  <h3>产线信息一览</h3>
+                  <ul>
+                    <li>所属组织:
+                      <p>{{ app.organization }}</p>
+                    </li>
+                    <li>所属产品线:
+                      <p>{{ app.productLine }}</p>
+                    </li>
+                    <li>所属产品:
+                      <p>{{ app.product }}</p>
+                    </li>
+                  </ul>
+                </div>
+              </tabcontent>
+              <tabcontent>
+                <div class="note">
+                  <h3>联系信息一览</h3>
+                  <ul>
+                    <li>应用负责人:
+                      <p>{{ app.owner }}</p>
+                    </li>
+                    <li>应用负责人邮箱:
+                      <p>{{ app.ownerMail }}</p>
+                    </li>
+                    <li>应用技术支持:
+                      <p>{{ app.supporter }}</p>
+                    </li>
+                    <li>技术支持邮箱:
+                      <p>{{ app.supportMail }}</p>
+                    </li>
+                  </ul>
+                </div>
+              </tabcontent>
+            </tabcontents>
+            <tabheaders>
+              <tabheader name="o" active="true" style="width:25%;">操作</tabheader>
+              <tabheader name="i" style="width:25%;">详情</tabheader>
+              <tabheader name="p" style="width:25%;">产线</tabheader>
+              <tabheader name="l" style="width:25%;">联系</tabheader>
+            </tabheaders>
+          </tabpanel>
+          -->
+        </div>
+      </div>
+      <div ng-if="isSingle()" class="hidden-lg hidden-md hidden-sm col-xs-1"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div style="position: absolute; right: 8px; margin-top: -16px; z-index: 999; font-size: 16px; line-height: 16px;" class="pull-right" role="expand-fullscreen" data-echo-type="app-detail"><i class="fa fa-expand"></i></div>
+-->
+
+<!--
+<div class="pull-right img-circle action-button action-button-56 yellow {{app.favorite}}" role="favorite" ng-click="favorite();" style="margin-top: 20px; right: 16px; position: absolute;"> <i class="fa fa-heart" title="关注此应用"></i></div>
+-->
+
+<postmark ng-if="isHistoryView()" ng-init="date = deployment.updatedAt.substring(0,10); time = deployment.updatedAt.substring(11);" ng-style="isSingle() ? {right: '224px', top: '48px'} : {right: '-120px', top: '-50px'}"></postmark>
+
+<!--position: {{getPos().position}}; margin-top: {{getPos().top}}px; right: {{getPos().right}}px;-->
+<action ng-if="!isSingle()" class="pull-right yellow no-monitor airmobile" ng-init="command = contribution.getAirmobile()" style="position: fixed; margin-top: 28px; right: 16px;" datasize="{{command.size}}" datatitle="{{command.title}}" dataicon="{{command.icon}}" datatext="{{command.text}}" datadisabled="{{ command.disabled }}" on-handle="command.click(this, $event)"></action>
+
+<action ng-if="isSingle()" class="pull-right yellow no-monitor airmobile" ng-init="command = contribution.getAirmobile()" style="position: absolute; margin-top: 20px; right: 16px;" datasize="{{command.size}}" datatitle="{{command.title}}" dataicon="{{command.icon}}" datatext="{{command.text}}" datadisabled="{{ command.disabled }}" on-handle="command.click(this, $event)"></action>

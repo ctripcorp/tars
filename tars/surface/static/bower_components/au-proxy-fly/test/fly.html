@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fly Test Suite</title>
+  <style>
+    .test{background: red;width: 50px;height:50px;}
+  </style>
+  <!-- Load local jQuery. -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <!-- Load local lib and tests. -->
+  <script src="../src/fly.js"></script>
+</head>
+<body>
+  <script>
+    $('<div class="test"></div>').fly({
+      start: {top: 542, left: 622},
+      end: {top: 142, left: 322, width: 20, height: 20},
+      onEnd: function(){
+        alert('End');
+        this.destory();
+      }
+    });
+  </script>
+</body>
+</html>

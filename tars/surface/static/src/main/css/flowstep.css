@@ -1,0 +1,420 @@
+@charset 'utf-8';
+.flowstep-wapper {
+  overflow: hidden;
+}
+.flowstep {
+  display: inline-block;
+  position: relative;
+  color: #000;
+  width: 100%;
+}
+.flowstep ul,
+.flowstep ol,
+.flowstep li,
+.flowstep p {
+  margin: 0;
+  padding: 0;
+}
+.flowstep ul,
+.flowstep ol {
+  list-style: none;
+}
+.flowstep li {
+  position: absolute;
+}
+.flowstep .step-name,
+.flowstep .step-no,
+.flowstep .step-time {
+  text-align: center;
+}
+.flowstep .step-name,
+.flowstep .step-no {
+  font-weight: bold;
+}
+.flowstep .step-time {
+  font-weight: 100;
+}
+.flowstep .step-no {
+  border-radius: 50%;
+  position: absolute;
+}
+.flowstep .flowstep-steps {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  z-index: 10;
+}
+.flowstep .step-error {
+  color: rgba(229, 28, 35, 0.8);
+}
+.flowstep .step-error .step-no {
+  border-style: none;
+  /*border-color: rgba(229, 28, 35, 0.8);*/
+  background-color: #e51c23;
+  box-shadow: 0 0 0 6px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+  color: #fff;
+}
+.flowstep .step-done {
+  color: rgba(37, 155, 36, 0.8);
+}
+.flowstep .step-done .step-no {
+  border-style: none;
+  /*border-color: rgba(37, 155, 36, 0.8);*/
+  background-color: #259b24;
+  box-shadow: 0 0 0 6px rgba(37, 155, 36, 0.2), 0 1px 1px #259b24;
+  color: #fff;
+}
+.flowstep .step-todo {
+  color: rgba(168, 168, 172, 0.8);
+}
+.flowstep .step-todo .step-no {
+  border-style: none;
+  /*border-color: rgba(168, 168, 172, 0.8);*/
+  background-color: #a8a8ac;
+  box-shadow: 0 0 0 6px rgba(168, 168, 172, 0.2), 0 1px 1px #a8a8ac;
+  color: #fff;
+}
+.flowstep .step-doing {
+  color: rgba(47, 196, 46, 0.8);
+}
+.flowstep .step-doing .step-no {
+  border-style: none;
+  /*border-color: rgba(47, 196, 46, 0.8);*/
+  background-color: #2fc42e;
+  box-shadow: 0 0 0 6px rgba(47, 196, 46, 0.2), 0 1px 1px #2fc42e;
+  color: #fff;
+  animation: flicker 3s infinite;
+  -webkit-animation: flicker 3s infinite;
+  animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+}
+.flowstep .step-status-error {
+  color: #e51c23;
+}
+.flowstep .step-status-error .step-no {
+  background-color: #e51c23;
+  box-shadow: 0 0 0 6px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+  animation: none;
+  -webkit-animation: none;
+}
+.flowstep .flowstep-progress {
+  position: absolute;
+  width: 100%;
+}
+.flowstep .flowstep-progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(168, 168, 172, 0.8);
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.flowstep .flowstep-progress-highlight {
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.flowstep .flowstep-progress-highlight.success {
+  background-color: rgba(37, 155, 36, 0.8);
+}
+.flowstep .flowstep-progress-highlight.error {
+  background-color: rgba(229, 28, 35, 0.8);
+}
+.flowstep-sm .step-todo .step-no {
+  box-shadow: 0 0 0 2px rgba(168, 168, 172, 0.2), 0 1px 1px #a8a8ac;
+}
+.flowstep-sm .step-done .step-no {
+  box-shadow: 0 0 0 2px rgba(37, 155, 36, 0.2), 0 1px 1px #259b24;
+}
+.flowstep-sm .step-error .step-no {
+  box-shadow: 0 0 0 2px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+}
+.flowstep-sm .step-doing .step-no {
+  box-shadow: 0 0 0 2px rgba(47, 196, 46, 0.2), 0 1px 1px #2fc42e;
+}
+.flowstep-xs .step-todo .step-no {
+  box-shadow: 0 0 0 2px rgba(168, 168, 172, 0.2), 0 1px 1px #a8a8ac;
+}
+.flowstep-xs .step-done .step-no {
+  box-shadow: 0 0 0 2px rgba(37, 155, 36, 0.2), 0 1px 1px #259b24;
+}
+.flowstep-xs .step-error .step-no {
+  box-shadow: 0 0 0 2px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+}
+.flowstep-xs .step-doing .step-no {
+  box-shadow: 0 0 0 2px rgba(47, 196, 46, 0.2), 0 1px 1px #2fc42e;
+}
+.flowstep-md .step-todo .step-no {
+  box-shadow: 0 0 0 2px rgba(168, 168, 172, 0.2), 0 1px 1px #a8a8ac;
+}
+.flowstep-md .step-done .step-no {
+  box-shadow: 0 0 0 2px rgba(37, 155, 36, 0.2), 0 1px 1px #259b24;
+}
+.flowstep-md .step-error .step-no {
+  box-shadow: 0 0 0 2px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+}
+.flowstep-md .step-doing .step-no {
+  box-shadow: 0 0 0 2px rgba(47, 196, 46, 0.2), 0 1px 1px #2fc42e;
+}
+.flowstep-lg .step-todo .step-no {
+  box-shadow: 0 0 0 2px rgba(168, 168, 172, 0.2), 0 1px 1px #a8a8ac;
+}
+.flowstep-lg .step-done .step-no {
+  box-shadow: 0 0 0 2px rgba(37, 155, 36, 0.2), 0 1px 1px #259b24;
+}
+.flowstep-lg .step-error .step-no {
+  box-shadow: 0 0 0 2px rgba(229, 28, 35, 0.2), 0 1px 1px #e51c23;
+}
+.flowstep-lg .step-doing .step-no {
+  box-shadow: 0 0 0 2px rgba(47, 196, 46, 0.2), 0 1px 1px #2fc42e;
+}
+@-webkit-keyframes flicker {
+  0% {
+    background-color: #BEEFBD;
+  }
+  20% {
+    background-color: #7CE07B;
+  }
+  40% {
+    background-color: #3BD039;
+  }
+  50% {
+    background-color: #259b24;
+  }
+  60% {
+    background-color: #3BD039;
+  }
+  60% {
+    background-color: #72d572;
+  }
+  80% {
+    background-color: #7CE07B;
+  }
+  100% {
+    background-color: #BEEFBD;
+  }
+}
+@keyframes flicker {
+  0% {
+    background-color: #BEEFBD;
+  }
+  20% {
+    background-color: #7CE07B;
+  }
+  40% {
+    background-color: #3BD039;
+  }
+  50% {
+    background-color: #259b24;
+  }
+  60% {
+    background-color: #3BD039;
+  }
+  60% {
+    background-color: #72d572;
+  }
+  80% {
+    background-color: #7CE07B;
+  }
+  100% {
+    background-color: #BEEFBD;
+  }
+}
+/*size css*/
+.flowstep-wapper-xs {
+  padding: 0px 32px 0px 16px;
+}
+.flowstep-xs {
+  height: 32px;
+  font-size: 12px;
+  line-height: 1;
+}
+.flowstep-xs li {
+  width: 32px;
+  height: 32px;
+}
+.flowstep-xs .step-name {
+  width: 32px;
+  margin-left: -8px;
+  font-size: 10px;
+}
+.flowstep-xs .step-time {
+  display: none;
+}
+.flowstep-xs .step-no {
+  width: 16px;
+  height: 16px;
+  top: 12px;
+  font-size: 10px;
+  /*border-width: 2px;*/
+  line-height: 16px;
+}
+.flowstep-xs .flowstep-progress {
+  height: 3px;
+  top: 20px;
+  left: 12px;
+}
+/*size css*/
+.flowstep-wapper-sm {
+  padding: 0px 72px 0px 48px;
+}
+.flowstep-sm {
+  height: 64px;
+  font-size: 12px;
+  line-height: 1;
+}
+.flowstep-sm li {
+  width: 88px;
+  height: 64px;
+}
+.flowstep-sm .step-name {
+  width: 60px;
+  margin-left: -20px;
+  font-size: 12px;
+  height: 13px;
+  line-height: 13px;
+}
+.flowstep-sm .step-time {
+  width: 72px;
+  margin-top: 22px;
+  margin-left: -28px;
+  font-size: 12px;
+}
+.flowstep-sm .step-no {
+  width: 20px;
+  height: 20px;
+  top: 14px;
+  font-size: 12px;
+  /*border-width: 3px;*/
+  line-height: 20px;
+}
+.flowstep-sm .flowstep-progress {
+  height: 5px;
+  top: 22px;
+  left: 12px;
+}
+/*large size css*/
+.flowstep-wapper-md {
+  padding: 0px 96px 0px 88px;
+}
+.flowstep-md {
+  height: 72px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.flowstep-md li {
+  width: 96px;
+  height: 72px;
+}
+.flowstep-md .step-name {
+  width: 100px;
+  margin-left: -40px;
+  font-size: 16px;
+  height: 18px;
+  line-height: 18px;
+}
+.flowstep-md .step-time {
+  width: 160px;
+  margin-top: 28px;
+  margin-left: -80px;
+}
+.flowstep-md .step-no {
+  width: 24px;
+  height: 24px;
+  top: 20px;
+  font-size: 15px;
+  /*border-width: 4px;*/
+  line-height: 24px;
+}
+.flowstep-md .flowstep-progress {
+  height: 9px;
+  top: 28px;
+  left: 12px;
+}
+/*large size css*/
+.flowstep-wapper-lg {
+  padding: 0px 160px 0px 128px;
+}
+.flowstep-lg {
+  height: 96px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+.flowstep-lg li {
+  width: 160px;
+  height: 96px;
+}
+.flowstep-lg .step-name {
+  width: 100px;
+  margin-left: -40px;
+  font-size: 20px;
+  height: 24px;
+  line-height: 24px;
+}
+.flowstep-lg .step-time {
+  width: 160px;
+  margin-top: 40px;
+  margin-left: -80px;
+}
+.flowstep-lg .step-no {
+  width: 32px;
+  height: 32px;
+  top: 28px;
+  font-size: 18px;
+  /*border-width: 5px;*/
+  line-height: 32px;
+}
+.flowstep-lg .flowstep-progress {
+  height: 9px;
+  top: 40px;
+  left: 12px;
+}
+.flowstep-wapper-static {
+  height: 96px;
+  padding: 0px 160px 0px 128px;
+}
+.flowstep-wapper-static .step-no {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  /*border-width: 5px;*/
+  top: 0px;
+}
+.flowstep-wapper-static .step-name {
+  text-align: center;
+  font-size: 18px;
+  width: 160px;
+  margin-top: 40px;
+  margin-left: -60px;
+}
+.flowstep-wapper-static .flowstep-progress {
+  height: 9px;
+  top: 18px;
+  left: 12px;
+  position: absolute;
+  width: 100%;
+}
+.flowstep-wapper-static .flowstep-progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(168, 168, 172, 0.8);
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.flowstep-wapper-static .flowstep-progress-highlight.success {
+  background-color: rgba(37, 155, 36, 0.8);
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

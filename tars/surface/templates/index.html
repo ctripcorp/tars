@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="com.ctrip.tars.Portal" xmlns:ng="http://angularjs.org" id="ng-app">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<!--
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+-->
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="fragment" content="!" />
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<title>{{name}}-{{target}}</title>
+<link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon" />
+<script src="/static/jre/jsvm.min.js?v={{version}}" type="text/javascript" jsvm="true" servletpath="static" debug="{{debug}}" main="com.ctrip.tars.Portal" version="{{version}}" skin="{{skin}}" target="{{target}}"></script>
+</head>
+<body ng-controller="com.ctrip.tars.root.Controller" ng-class="" style="position: relative;">
+    <div ng-controller="com.ctrip.tars.component.angular.notification.Controller">
+        <notifications ng-if="notifications.length > 0"></notifications>
+    </div>
+    
+  	<welcome></welcome>
+
+  	<countdown></countdown>
+	
+	<header class="header" ng-controller="com.ctrip.tars.header.Controller">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class='logo-name' target="_self" href="/">
+						<span class="logo"></span>
+						<span class="name">Tars</span>
+					</a><!-- navbar-brand -->
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+
+						<li><a href="mailto:tars@Ctrip.com?cc=tars@Ctrip.com&&subject=user feedback" 
+							class="navbar-content"
+							tooltip data-placement="bottom"
+							data-title="点击此处发送邮件"><i class="fa fa-comments-o"></i>&nbsp;反馈</a></li>
+						
+						<li><a href="/logout" target="_self"
+							class="navbar-content"
+							tooltip data-placement="bottom"
+							data-title="点击此处退出系统"><i class="fa fa-user"></i>&nbsp;{{ user }}</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+            
+	<div class="row-offcanvas row-offcanvas-left" ng-view
+		ng-controller="com.ctrip.tars.dispatcher.Controller" id="com-ctrip-tars-dispatcher-Controller"></div>
+
+	<!--
+		<footer class="footer"><nav class="navbar" role="navigation"></footer>
+	-->
+
+</body>
+</html>

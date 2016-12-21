@@ -1,0 +1,1 @@
+Class.forName({name:"class RegExp",alias:"js.lang.RegExp",RegExp:function(){}});

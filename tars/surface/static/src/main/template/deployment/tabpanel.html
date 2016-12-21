@@ -1,0 +1,523 @@
+<div ng-controller="com.ctrip.tars.deployments.tabs.Controller">
+  <tabpanel>
+    <control-up-down></control-up-down>
+    <tabheaders class="no-monitor deployment-tabs">
+      <!--<tabheader name="appinfo">应用详情</tabheader>-->
+
+      <tabheader name="servers" active="true">主机列表</tabheader>
+
+      <!--<tabheader name="events">事件</tabheader>-->
+      <tabheader name="console">日志</tabheader>
+
+      <!--<tabheader name="exceptions">CLOG</tabheader>-->
+
+      <tabheader name="histories">发布历史</tabheader>
+    </tabheaders>
+    <tabcontents>
+      <!--
+                <tabcontent>
+                    <div class="box" style="margin-bottom: 0px;">
+                        <div class="box-header">
+                            <h3 class="box-title">
+
+								<i class="fa fa-list-alt"></i>&nbsp;应用详情
+
+							</h3>
+                        </div>
+                        <div class="box-body border-radius-none">
+                            <div class="app-infos">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用名称：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.name }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用名称(英文)：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.name }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用名称(短)：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.name | short2 }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用类型：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.appType }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">AppId：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.id }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">版本：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.appVersion }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">状态：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">生产发布中（detail step）</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">重要性：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.importance}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">所属组织：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.organization}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">所属产品线：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.productLine}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">所属产品：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.product}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用负责人：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.owner}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用负责人邮箱：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">******@ctrip.com</div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用技术支持：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.manager}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">技术支持邮箱：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">******@ctrip.com</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="text-align:right;">应用描述/备注：</div>
+                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="text-align:left;">{{ app.description}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tabcontent>
+                -->
+      <tabcontent>
+        <div ng-controller="com.ctrip.tars.servers.Controller" id="com-ctrip-tars-servers-Controller">
+          <div class="box" style="margin-bottom: 0px; background-color: #f5f5f5;">
+            <div class="box-header container-fluid" style="margin-right: 72px;">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                  <h3 class="box-title">
+
+                    <i class="fa fa-sitemap"></i>
+                    <span>&nbsp;主机列表</span>
+
+                  </h3>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                  <!--<div class="box-filter navbar-form" role="search">
+                                        <div class="btn-group btn-group-sm">
+                                            <button class="btn btn-filter" role="servers-sorts">IDC&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="servers-sorts">IP&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="servers-sorts">CPU&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="servers-sorts">内存&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter active" role="servers-sorts">默认&nbsp;<i class="fa fa-arrow-down"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" placeholder="Search" style="padding-right: 28px;">
+                                            <span class="form-control-feedback" style="top:4px; right:4px;"><i class="fa fa-search"></i></span>
+                                        </div>
+                                    </div>-->
+
+                  <div class="box-pager navbar-form hidden-sm hidden-xs" role="pagination">
+                    <div class="form-group has-feedback pagination2" ng-controller="com.ctrip.tars.component.angular.pagination.Controller">
+                      <pagination2></pagination2>
+                    </div>
+                  </div>
+                  <div class="box-tools navbar-form hidden-sm hidden-xs" role="tools">
+                    <div class="form-group refresh-switch" style="display: inline-block;margin-top: 5px;">
+                      <input id="servers-refresh" name="servers-refresh" ng-model="autofresh.checked" ng-disabled="autofresh.isDisabled()" type="checkbox" class="toggle" />
+                      <label for="servers-refresh">刷新</label>
+
+
+                      <!--测试beautify checkbox and radio
+                                            <input id="servers-refresh1" name="servers-refresh1" type="checkbox" class="toggle"/>
+                                            <label for="servers-refresh1">toggle</label>
+
+                                            <input id="servers-refresh11" name="servers-refresh11" checked type="checkbox" class="toggle"/>
+                                            <label for="servers-refresh11">toggle checked</label>
+
+
+                                            <input id="servers-refresh2" name="servers-refresh2" type="checkbox"/>
+                                            <label for="servers-refresh2">checkbox</label>
+
+                                            <input id="servers-refresh22" name="servers-refresh22" checked type="checkbox"/>
+                                            <label for="servers-refresh22">checkbox checked</label>
+
+
+                                            <input id="servers-refresh3" name="servers-refresh3" checked type="radio"/>
+                                            <label for="servers-refresh3">radio-1 checked</label>
+
+
+                                            <input id="servers-refresh4" name="servers-refresh3" type="radio"/>
+                                            <label for="servers-refresh4">radio-2</label>
+
+
+                                            <input id="servers-refresh111" name="servers-refresh111" disabled type="checkbox" class="toggle"/>
+                                            <label for="servers-refresh111">toggle disabled</label>
+
+                                            <input id="servers-refresh1111" name="servers-refresh1111" disabled checked type="checkbox" class="toggle"/>
+                                            <label for="servers-refresh1111">toggle checked disabled</label>
+
+                                            <input id="servers-refresh222" name="servers-refresh222" disabled type="checkbox"/>
+                                            <label for="servers-refresh222">checkbox disabled</label>
+
+                                            <input id="servers-refresh2222" name="servers-refresh2222" disabled checked type="checkbox"/>
+                                            <label for="servers-refresh2222">checkbox disabled checked</label>
+
+
+                                            <input id="servers-refresh333" name="servers-refresh333" disabled checked type="radio"/>
+                                            <label for="servers-refresh333">radio-1 disabled checked</label>
+
+
+                                            <input id="servers-refresh444" name="servers-refresh333" disabled type="radio"/>
+                                            <label for="servers-refresh444">radio-2 disabled</label>
+                                            -->
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="box-body monitor">
+              <div id="servers-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }" class="scroller bg-wall">
+                <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+                  <div class="timeline-items">
+                    <li-server ng-repeat="host in servers track by host.id"></li-server>
+                    <!--
+                    dataid="{{ host.id }}" dataindex="{{ $index }}" datahashcode="{{host.hashcode}}" datahostname="{{host.hostname}}" dataip="{{host.ipAddress}}" datastatus="{{ host.status }}" dataerrlogcurr="{{host.errLogCurr}}" datavisitcurr="{{host.visitCurr}}" datacostcurr="{{host.costCurr}}" datacpucurr="{{host.cpuCurr}}" datamemcurr="{{host.memCurr}}" datamonitertime="{{host.moniterTime}}" on-more="alert(1);"
+                    -->
+                    <div class="none-data" ng-if="servers.length<=0" style="color: #555; height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                      <span>对不起，当前没有集群信息供查看。</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tabcontent>
+      <!--
+                <tabcontent>
+                <div ng-controller="com.ctrip.tars.events.Controller" id="com-ctrip-tars-events-Controller">
+                    <div class="box" style="margin-bottom: 0px;" >
+                        <div class="box-header container-fluid">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <h3 class="box-title">
+                                        <i class="fa fa-bell-o"></i>&nbsp;事件
+                                    </h3>
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                    <div class="box-pager navbar-form hidden-sm hidden-xs" role="pagination">
+                                        <div class="form-group has-feedback pagination2" ng-controller="com.ctrip.tars.component.angular.pagination.Controller">
+                                            <pagination2></pagination2>
+                                        </div>
+                                    </div>
+                                    <div class="box-filter navbar-form" role="filter">
+                                        <div class="form-group dropdown btn btn-filter" role="filter" style="padding: 0px 4px;">
+                                            <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="line-height:28px;">
+                                                <span ng-show="filters.deploy_target_status == null">类型过滤</span> {{ stepName }}<span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a ng-click="setFiltersOfStep('DISABLING')" href="javascript:void(0);">拉出</a>
+                                                </li>
+                                                <li><a ng-click="setFiltersOfStep('DOWNLOADING')" href="javascript:void(0);">下载</a>
+                                                </li>
+                                                <li><a ng-click="setFiltersOfStep('INSTALLING')" href="javascript:void(0);">部署</a>
+                                                </li>
+                                                <li><a ng-click="setFiltersOfStep('VERIFYING')" href="javascript:void(0);">点火</a>
+                                                </li>
+                                                <li><a ng-click="setFiltersOfStep('ENABLING')" href="javascript:void(0);">拉入</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a ng-click="setFiltersOfStep('ALL')" href="javascript:void(0);">全部</a>
+                                                </li>
+                                            </ul>
+                                        </div>-->
+      <!--
+                                        <div class="form-group dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="line-height:28px;">状态过滤 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">成功</a>
+                                                </li>
+                                                <li><a href="#">失败</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">全部</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        -->
+      <!--
+                                        <div class="form-group">
+                                            <input type="radio" name="events-filter-bytime" class="form-control">3H&nbsp;
+                                            <input type="radio" name="events-filter-bytime" class="form-control">12H&nbsp;
+                                            <input type="radio" name="events-filter-bytime" class="form-control">1D&nbsp;
+                                            <input type="radio" name="events-filter-bytime" class="form-control">3D&nbsp;
+                                            <input type="radio" name="events-filter-bytime" class="form-control">7D&nbsp;
+                                        </div>
+                                        -->
+      <!--
+                                        <div class="form-group has-feedback" style="display: inline-block;">
+                                            <input type="text" ng-model="filters.deploy_target" ng-change="query()" class="form-control filter-search" placeholder="deployment target id">
+                                            <span class="form-control-feedback" style="top:4px; right:4px;width: 28px;height: 28px;line-height: 28px;"><i class="fa fa-search"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="box-sorter navbar-form" role="sorter">
+                                        <div class="btn-group btn-group-sm">-->
+      <!--
+                                            <button class="btn btn-filter" role="events-sorts">时间&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="events-sorts">类型&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="events-sorts">状态&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            -->
+      <!--
+                                            <button style="margin: 4px;" class="btn btn-filter active" role="events-sorts" ng-click="sorter('log_timestamp')">时间&nbsp;
+                                            <i class="fa fa-arrow-down" ng-if="sorters.sort_order=='desc'"></i>
+                                            <i class="fa fa-arrow-up" ng-if="sorters.sort_order=='asc'"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-tools navbar-form hidden-sm hidden-xs" role="tools">
+                                        <div class="form-group" style="display: inline-block;margin-top: 5px;">
+                                            <input id="events-refresh" name="events-refresh" ng-model="autofresh.checked" ng-disabled="autofresh.isDisabled()" type="checkbox" class="toggle"/>
+                                            <label for="events-refresh">刷新</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="events-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }" class="scroller bg-wall">
+
+                        <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+                             
+                            <div class="timeline-items">
+                             
+                                <li-event ng-repeat="e in events" dataid="{{ e.logId }}" dataindex="{{ $index }}" ></li-event>-->
+
+      <!--dataappid="{{e.appId}}" datadeployid="{{e.deployId}}" datadeploystatus="{{e.deployStatus}}" datadeploytarget="{{e.deployTarget}}" datadeploytargetstatus="{{e.deployTargetStatus}}" datadetail="{{e.detail}}" datalogLevel="{{e.logLevel}}" datalogtimestamp="{{e.logTimestamp}}"-->
+      <!-- 
+
+                                <div class="none-data" ng-if="events.length<=0" style="color: #555; height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                                    对不起，当前没有事件信息供查看。
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                </tabcontent>-->
+      <tabcontent>
+        <div ng-controller="com.ctrip.tars.console.Controller" id="com-ctrip-tars-console-Controller">
+          <div class="box" style="margin-bottom: 0px; background-color: #f5f5f5;">
+            <div class="box-header container-fluid" style="margin-right: 72px;">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                  <h3 class="box-title">
+
+                    <i class="fa fa-bell-o"></i>
+                    <span>&nbsp;日志</span>
+
+                  </h3>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                  <!--
+                                    <div class="box-pager navbar-form hidden-sm hidden-xs" role="pagination">
+                                        <div class="form-group has-feedback pagination2" ng-controller="com.ctrip.tars.component.angular.pagination.Controller">
+                                            <pagination2></pagination2>
+                                        </div>
+                                    </div>
+                                    -->
+                  <div class="box-filter navbar-form" role="filter">
+                    <div class="form-group dropdown btn btn-filter active" role="filter" style="padding: 0px 4px;">
+                      <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="line-height:28px;">
+                        <span ng-show="filters.deploy_target_status == null">类型</span> {{ stepName }}
+                        <span class="caret"></span>
+                      </div>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="setFiltersOfStep('DISABLING')" href="javascript:void(0);">拉出</a>
+                        </li>
+                        <li><a ng-click="setFiltersOfStep('DOWNLOADING')" href="javascript:void(0);">下载</a>
+                        </li>
+                        <li><a ng-click="setFiltersOfStep('INSTALLING')" href="javascript:void(0);">部署</a>
+                        </li>
+                        <li><a ng-click="setFiltersOfStep('VERIFYING')" href="javascript:void(0);">点火</a>
+                        </li>
+                        <li><a ng-click="setFiltersOfStep('ENABLING')" href="javascript:void(0);">拉入</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a ng-click="setFiltersOfStep('ALL')" href="javascript:void(0);">全部</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--
+                                        <div class="form-group dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="line-height:28px;">状态过滤 <span class="caret"></span>
+                                            </div>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#">成功</a>
+                                                </li>
+                                                <li><a href="#">失败</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li><a href="#">全部</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        -->
+                    <!--
+                                        <div class="form-group">
+                                            <input type="radio" name="console-filter-bytime" class="form-control">3H&nbsp;
+                                            <input type="radio" name="console-filter-bytime" class="form-control">12H&nbsp;
+                                            <input type="radio" name="console-filter-bytime" class="form-control">1D&nbsp;
+                                            <input type="radio" name="console-filter-bytime" class="form-control">3D&nbsp;
+                                            <input type="radio" name="console-filter-bytime" class="form-control">7D&nbsp;
+                                        </div>
+                                        -->
+                    <div class="form-group has-feedback" style="display: inline-block;">
+                      <input type="text" ng-model="filters.deploy_target" ng-change="query()" class="form-control filter-search" placeholder="deployment target id">
+                      <span class="form-control-feedback" style="top:4px; right:4px;width: 28px;height: 28px;line-height: 28px;"><i class="fa fa-search"></i></span>
+                    </div>
+                  </div>
+
+                  <div class="box-sorter navbar-form" role="sorter">
+                    <div class="btn-group btn-group-sm">
+                      <!--
+                                            <button class="btn btn-filter" role="console-sorts">时间&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="console-sorts">类型&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            <button class="btn btn-filter" role="console-sorts">状态&nbsp;<i class="fa fa-sort"></i>
+                                            </button>
+                                            -->
+                      <button style="margin: 4px;" class="btn btn-filter active" role="console-sorts" ng-click="sorter('log_timestamp')">时间&nbsp;
+                        <i class="fa fa-arrow-down" ng-if="sorters.sort_order=='desc'"></i>
+                        <i class="fa fa-arrow-up" ng-if="sorters.sort_order=='asc'"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="box-tools navbar-form hidden-sm hidden-xs" role="tools">
+                    <div class="form-group refresh-switch" style="display: inline-block;margin-top: 5px;">
+                      <input id="console-refresh" name="console-refresh" ng-model="autofresh.checked" ng-disabled="autofresh.isDisabled()" type="checkbox" class="toggle" />
+                      <label for="console-refresh">刷新</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-body monitor">
+              <div id="console-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }" class="scroller bg-wall">
+                <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+                  <div class="timeline-items">
+                    <li-event ng-repeat="log in logs track by $index" dataid="{{ log.logId }}" dataindex="{{ $index }}"></li-event>
+                    <!--track by log.logId-->
+                    <!--dataappid="{{log.appId}}" datadeployid="{{log.deployId}}" datadeploystatus="{{log.deployStatus}}" datadeploytarget="{{log.deployTarget}}" datadeploytargetstatus="{{log.deployTargetStatus}}" datadetail="{{log.detail}}" datalogLevel="{{log.logLevel}}" datalogtimestamp="{{log.logTimestamp}}"-->
+                    <div class="none-data" ng-if="logs.length<=0" style="color: #555; height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                      <span>对不起，当前没有日志信息供查看。</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </tabcontent>
+
+      <!--
+        <tabcontent>
+          <div class="box" style="margin-bottom: 0px;">
+            <div class="box-header">
+              <h3 class="box-title">
+		            <i class="fa fa-exclamation-triangle"></i>&nbsp;CLOG
+	             </h3>
+            </div>
+            <div class="box-body monitor">
+              <div id="exceptions-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }" class="scroller bg-wall">
+
+                <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+                    <div class="timeline-items" ng-controller="com.ctrip.tars.exceptions.Controller">
+                        <li-exception ng-repeat="exception in exceptions" dataname="{{exception.name}}" dataexceptiontype="{{exception.exceptionType}}" dataroundtype="{{exception.roundType}}" datacurrentcount="{{exception.currentCount}}" dataroundcount="{{roundCount}}" datamonitertime="{{exception.moniterTime}}"
+                        on-more="alert(1);"></li-exception>
+
+                        <div class="none-data" ng-if="exceptions.length<=0" style="color: #555; height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+
+          对不起，当前没有异常信息供查看。 </div>
+
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        </tabcontent>
+        -->
+
+      <tabcontent>
+        <div ng-controller="com.ctrip.tars.histories.Controller" id="com-ctrip-tars-histories-Controller">
+          <div class="box" style="margin-bottom: 0px; background-color: #f5f5f5;">
+            <div class="box-header container-fluid" style="margin-right: 72px;">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                  <h3 class="box-title">
+
+                    <i class="fa fa-history"></i>
+                    <span>&nbsp;发布历史</span>
+
+                  </h3>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                  <div class="box-pager navbar-form hidden-sm hidden-xs" role="pagination">
+                    <div class="form-group has-feedback pagination2" ng-controller="com.ctrip.tars.component.angular.pagination.Controller">
+                      <pagination2></pagination2>
+                    </div>
+                  </div>
+                  <div class="box-tools navbar-form hidden-sm hidden-xs" role="tools">
+                    <div class="form-group refresh-switch" style="display: inline-block;margin-top: 5px;">
+                      <input id="histories-refresh" name="histories-refresh" ng-model="autofresh.checked" ng-disabled="autofresh.isDisabled()" type="checkbox" class="toggle" />
+                      <label for="histories-refresh">刷新</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-body monitor">
+              <div id="histories-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }" class="scroller bg-wall">
+                <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+                  <!--  dataid="{{history.id}}" dataapplication="{{history.application}}" datadatetime="{{history.updatedAt}}" datastatus="{{ history.status }}" databatchpattern="{{ history.config.batchPattern }}" datapausetime="{{ history.config.pauseTime }}" dataverifytimeout="{{ history.config.verifyTimeout }}" datastartuptimeout="{{ history.config.startupTimeout }}" datastatussymbol="{{history.statusSymbol}}" datastatusclass="{{history.statusClass}}" datarerollable="{{ history.rerollable }}" dataflavor="{{history.flavor}}" datapackagename="{{ history.package.name }}" datapackageversion="{{ history.package.version }}" datapackagetimestamp="{{ history.package.updatedAt }}" on-more="" -->
+                  <div class="timeline-items">
+                    <li-history ng-repeat="history in histories track by history.id"></li-history>
+                    <div class="none-data" ng-if="histories.length<=0" style="color: #555; height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                      <span>对不起，当前没有发布历史信息供查看。</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tabcontent>
+    </tabcontents>
+  </tabpanel>
+</div>

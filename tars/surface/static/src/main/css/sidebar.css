@@ -1,0 +1,236 @@
+@charset 'utf-8';
+.sidebar {
+  width: 100%;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .sidebar .left {
+    width: 0%;
+    opacity: 0;
+  }
+  .sidebar .left + .center {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .sidebar .left {
+    width: 280px;
+  }
+  .sidebar .left + .center {
+    left: 0px;
+    width: 100%;
+  }
+}
+.sidebar .toggle-icon {
+  transition-duration: 0.5s;
+  transition-timing-function: swing;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  z-index: 500;
+}
+.sidebar .toggle-icon:hover {
+  cursor: pointer;
+}
+.sidebar .toggle-icon .icon {
+  transition-duration: 0.2s;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: white;
+  top: 24px;
+  left: 10px;
+}
+.sidebar .toggle-icon .icon:before,
+.sidebar .toggle-icon .icon:after {
+  transition-duration: 0.5s;
+  background-color: white;
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 2px;
+  left: 0px;
+}
+.sidebar .toggle-icon .icon:before {
+  top: -7px;
+}
+.sidebar .toggle-icon .icon:after {
+  top: 7px;
+}
+.sidebar.open {
+  overflow: hidden;
+}
+.sidebar.open .toggle-icon .icon {
+  background-color: transparent;
+}
+.sidebar.open .toggle-icon .icon:before,
+.sidebar.open .toggle-icon .icon:after {
+  top: 0;
+}
+.sidebar.open .toggle-icon .icon:before {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.sidebar.open .toggle-icon .icon:after {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+@media (min-width: 992px) {
+  .sidebar.open .left {
+    width: 15%;
+    opacity: 1;
+  }
+  .sidebar.open .left + .center {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .sidebar.open .left {
+    width: 280px;
+  }
+  .sidebar.open .left + .center {
+    left: 280px;
+    width: 100%;
+  }
+}
+.sidebar.open .cd-nav-trigger {
+  /* rotate trigger when navigation becomes visible */
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.sidebar.open .cd-nav-trigger .cd-nav-icon:after,
+.sidebar.open .cd-nav-trigger .cd-nav-icon:before {
+  /* animate arrow --> from hamburger to arrow */
+  width: 50%;
+  -webkit-transition: -webkit-transform 0.5s, width 0.5s;
+  -moz-transition: -moz-transform 0.5s, width 0.5s;
+  transition: transform 0.5s, width 0.5s;
+}
+.sidebar.open .cd-nav-trigger .cd-nav-icon:before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.sidebar.open .cd-nav-trigger .cd-nav-icon:after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.sidebar.open .cd-nav-trigger circle {
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 0.4s 0.3s;
+  -moz-transition: stroke-dashoffset 0.4s 0.3s;
+  transition: stroke-dashoffset 0.4s 0.3s;
+}
+.sidebar.open.no-touch .cd-nav-trigger:hover .cd-nav-icon:after,
+.sidebar.open.no-touch .cd-nav-trigger:hover .cd-nav-icon:before {
+  top: 0;
+}
+.sidebar .cd-nav-trigger {
+  position: absolute;
+  z-index: 500;
+  left: 0px;
+  top: 0px;
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  -webkit-transition: -webkit-transform 0.5s;
+  -moz-transition: -moz-transform 0.5s;
+  transition: transform 0.5s;
+}
+.sidebar .cd-nav-trigger .cd-nav-icon {
+  /* icon created in CSS */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 22px;
+  height: 2px;
+  background-color: #ffffff;
+}
+.sidebar .cd-nav-trigger .cd-nav-icon:before,
+.sidebar .cd-nav-trigger .cd-nav-icon:after {
+  /* upper and lower lines of the menu icon */
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.5s, width 0.5s, top 0.3s;
+  -moz-transition: -moz-transform 0.5s, width 0.5s, top 0.3s;
+  transition: transform 0.5s, width 0.5s, top 0.3s;
+}
+.sidebar .cd-nav-trigger .cd-nav-icon:before {
+  -webkit-transform-origin: right top;
+  -moz-transform-origin: right top;
+  -ms-transform-origin: right top;
+  -o-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: translateY(-6px);
+  -moz-transform: translateY(-6px);
+  -ms-transform: translateY(-6px);
+  -o-transform: translateY(-6px);
+  transform: translateY(-6px);
+}
+.sidebar .cd-nav-trigger .cd-nav-icon:after {
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: translateY(6px);
+  -moz-transform: translateY(6px);
+  -ms-transform: translateY(6px);
+  -o-transform: translateY(6px);
+  transform: translateY(6px);
+}
+.sidebar .cd-nav-trigger svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.sidebar .cd-nav-trigger circle {
+  /* circle border animation */
+  -webkit-transition: stroke-dashoffset 0.4s 0s;
+  -moz-transition: stroke-dashoffset 0.4s 0s;
+  transition: stroke-dashoffset 0.4s 0s;
+}
+.sidebar.no-touch .cd-nav-trigger:hover .cd-nav-icon:after {
+  top: 2px;
+}
+.sidebar.no-touch .cd-nav-trigger:hover .cd-nav-icon:before {
+  top: -2px;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-nav-trigger {
+    top: 40px;
+  }
+}

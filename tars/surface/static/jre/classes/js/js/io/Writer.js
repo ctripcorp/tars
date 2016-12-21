@@ -1,0 +1,1 @@
+Class.forName({name:"abstract class js.io.Writer extends Object","protected _writer":null,Writer:function(t){this._writer=t},append:function(t){return this},write:function(t,e,r){}});

@@ -1,0 +1,121 @@
+{
+  "name": "tars",
+  "authors": [
+    "lico"
+  ],
+  "description": "tars surface",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "3.3.4",
+    "fontawesome": "~4.3.0",
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-resource": "~1.4.0",
+    "angular-animate": "~1.4.0",
+    "angular-strap": "~2.2.4",
+    "angular-ui-bootstrap-bower": "~0.13.0",
+    "bxslider-4": "~4.2.3",
+    "jquery.easy-pie-chart": "~2.1.6",
+    "highstock-release": "~v2.1.5",
+    "iscroll": "~5.1.3",
+    "ionrangeslider": "~2.0.9",
+    "jsPlumb": "1.7.5",
+    "greensock": "~1.17.0",
+    "jquery-mousewheel": "~3.1.12",
+    "malihu-custom-scrollbar-plugin": "~3.0.8",
+    "au-dialog": "~0.3.3",
+    "au-loading": "~0.1.2",
+    "au-msgbox": "~0.1.3",
+    "jquery-easing-original": "~1.3.2",
+    "au-proxy-fly": "~1.0.0",
+    "au-proxy-liteaccordion": "~2.2.0",
+    "textillate": "~0.4.0"
+  },
+  "devDependencies": {},
+  "overrides": {
+    "normalizeMulti": [{
+      "dependencies": [
+        "fontawesome",
+        "bootstrap",
+        "au-dialog",
+        "au-loading",
+        "au-msgbox",
+        "bxslider-4",
+        "iCheck",
+        "malihu-custom-scrollbar-plugin"
+      ],
+      "normalize": {
+        "images": [
+          "*.jpeg",
+          "*.png",
+          "*.jpg",
+          "*.gif"
+        ],
+        "fonts": [
+          "*.eot",
+          "*.otf",
+          "*.svg",
+          "*.ttf",
+          "*.woff",
+          "*.woff2"
+        ],
+        "js": [
+          "*.js"
+        ],
+        "css": [
+          "*.css"
+        ],
+        "less": [
+          "*.less"
+        ]
+      }
+    }],
+    "ionrangeslider": {
+      "main": [
+        "js/ion.rangeSlider.js",
+        "css/ion.rangeSlider.css",
+        "css/ion.rangeSlider.skinNice.css",
+        "img/sprite-skin-nice.png"
+      ],
+      "normalize": {
+        "img": [
+          "*.png"
+        ],
+        "js": [
+          "*.js"
+        ],
+        "css": [
+          "*.css"
+        ]
+      }
+    },
+    "iscroll": {
+      "main": [
+        "build/iscroll-probe.js"
+      ]
+    },
+    "jsPlumb": {
+      "main": [
+        "dist/js/jquery.jsPlumb-1.7.5.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular": "1.3.13"
+  },
+  "group": "com.ctrip",
+  "artifact": "tars",
+  "debug": true,
+  "skin": "default",
+  "version": "1.2.26",
+  "target": "local"
+}

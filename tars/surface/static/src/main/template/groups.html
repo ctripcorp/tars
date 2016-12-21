@@ -1,0 +1,66 @@
+<div ng-controller="com.ctrip.tars.groups.Controller" id="com-ctrip-tars-groups-Controller">
+  <div class="box box-solid" style="margin-bottom: 0px; background: transparent; overflow: hidden;">
+    <div class="box-header">
+      <div id="sidebar-toggle" class="pull-left sidebar" style="width: 40px; height: 40px; margin: 4px 4px; position: relative; border-radius: 50%; -webkit-border-radius: 50%;"></div>
+      <h4 class="box-title text-overflow" style="padding-left: 0px; height: 48px;">
+        <ol class="breadcrumb">
+          <li>Tars</li>
+          <li ng-repeat="crumb in breadcrumb">{{ crumb.text }}</li>
+        </ol>
+      </h4>
+    </div>
+
+    <div class="box-body border-radius-none">
+      <concern-center style="overflow: visible; height: {{layout.height}}px;" ng-style="{'height':'{{layout.height}}px'}">
+        <!--
+        <accordions ng-if="groups.length>0">
+          <accordion2 ng-repeat="group in groups track by group.id">
+            <div ng-controller="com.ctrip.tars.groups.group.Controller" style="height: 100%;">
+              <div ripple ng-controller="com.ctrip.tars.group.Controller" class="com-ctrip-tars-group-Controller" style="overflow: visible; height: 100%;">
+                <ng-include src="'template!deployment.html'" init-variable=""></ng-include>
+              </div>
+            </div>
+          </accordion2>
+        </accordions>
+        <div ng-if="groups.length <= 0" style="color: #555; height: {{layout.height}}px; text-align: center; line-height: {{layout.height}}px;">对不起，没有查询到任何group数据。</div>
+        -->
+
+        <contentflow ripple>
+          <contentflow-item ng-repeat="group in groups.toArray() track by group.id">
+            <div ng-if="group.id == 0" style="color: black; padding: 50% 0%; text-align: center;">
+              对不起，当前没有数据供展示。
+            </div>
+            <div ng-if="!group.active" style="width: 100%; height: 100%;">
+              <summary></summary>
+            </div>
+            <div ng-if="group.active && group.id != 0" ng-controller="com.ctrip.tars.groups.group.Controller" style="height: 100%;">
+              <div ng-controller="com.ctrip.tars.group.Controller" class="com-ctrip-tars-group-Controller" style="overflow: hidden; height: 100%;">
+                <!--ripple-->
+                <ng-include src="'template!deployment.html'" init-variable=""></ng-include>
+              </div>
+            </div>
+          </contentflow-item>
+          <!--
+        <div class="item"><img class="content" src="/static/src/main/images/postmark.png"/><div class="caption">1</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/loading.gif"/><div class="caption">2</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/404-lg.png"/><div class="caption">3</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/lockscreen.png"/><div class="caption">4</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/postmark.png"/><div class="caption">5</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/loading.gif"/><div class="caption">6</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/404-lg.png"/><div class="caption">7</div></div>
+        <div class="item"><img class="content" src="/static/src/main/images/lockscreen.png"/><div class="caption">8</div></div>
+  -->
+        </contentflow>
+      </concern-center>
+    </div>
+
+
+    <concern-south>
+      <ng-include src="'template!deployment/tabpanel.html'" init-variable=""></ng-include>
+    </concern-south>
+
+    <ng-include src="'template!dialog/rollout.html'" init-variable=""></ng-include>
+    <ng-include src="'template!dialog/rollback.html'" init-variable=""></ng-include>
+    <ng-include src="'template!dialog/batches.html'" init-variable=""></ng-include>
+  </div>
+</div>

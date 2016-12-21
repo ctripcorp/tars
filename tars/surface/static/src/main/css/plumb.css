@@ -1,0 +1,383 @@
+@charset 'utf-8';
+.topology {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  height: 296px;
+}
+.topology .element {
+  font-size: 12px;
+}
+.topology .element:hover,
+.topology .element._jsPlumb_source_hover,
+.topology .element._jsPlumb_target_hover {
+  border: 1px solid #ffeb3b;
+  color: #ffeb3b;
+}
+.jsPlumb {
+  /** Z-INDEX **/
+  /* ---------------------- bootstrap dropdowns ------------------------- */
+}
+.jsPlumb .element .title {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.jsPlumb .element .title .todo,
+.jsPlumb .element .title .doing,
+.jsPlumb .element .title .done,
+.jsPlumb .element .title .working,
+.jsPlumb .element .title .maintain {
+  font-size: 16px;
+  text-align: center;
+  margin: auto 4px;
+}
+.jsPlumb .element .title .todo .unit,
+.jsPlumb .element .title .doing .unit,
+.jsPlumb .element .title .done .unit {
+  font-size: 12px;
+  margin: auto 4px;
+}
+.jsPlumb .element.vip {
+  cursor: default;
+}
+.jsPlumb .element.vip .title {
+  border-width: 0px;
+  line-height: 34px;
+}
+.jsPlumb .element .content {
+  padding: 0px;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  left: 2px;
+  right: 2px;
+  bottom: 0px;
+  text-align: center;
+  overflow: hidden;
+  /*border-radius: 50%;*/
+}
+.jsPlumb .element .content .pending,
+.jsPlumb .element .content .working,
+.jsPlumb .element .content .maintain {
+  font-size: 28px;
+  line-height: 56px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.jsPlumb .element .content .pending .unit,
+.jsPlumb .element .content .working .unit,
+.jsPlumb .element .content .maintain .unit {
+  margin: 0px 8px;
+  font-size: 12px;
+}
+.jsPlumb .element .content .deploying,
+.jsPlumb .element .content .executed {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 0px;
+  line-height: 50px;
+}
+.jsPlumb .element .content .deploying .success,
+.jsPlumb .element .content .executed .success {
+  font-size: 32px;
+  /*color: rgba(37, 155, 36, 0.8);*/
+}
+.jsPlumb .element .content .deploying .count,
+.jsPlumb .element .content .executed .count {
+  color: rgba(147, 147, 147, 0.8);
+  font-size: 16px;
+}
+.jsPlumb .element .content .deploying .revoked,
+.jsPlumb .element .content .executed .revoked {
+  background-color: rgba(249, 168, 37, 0.8);
+  font-size: 12px;
+  /* padding: 4px 2px; */
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+.jsPlumb .element .content .deploying .failure,
+.jsPlumb .element .content .executed .failure,
+.jsPlumb .element .content .working .failure,
+.jsPlumb .element .content .maintain .failure {
+  background-color: rgba(229, 28, 35, 0.8);
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: -1.2px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+.jsPlumb .element .content .deploying .unit,
+.jsPlumb .element .content .executed .unit,
+.jsPlumb .element .content .working .unit,
+.jsPlumb .element .content .maintain .unit {
+  margin: auto 4px;
+  font-size: 12px;
+}
+.jsPlumb .element .content .badge-count {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  /* color: #fff; */
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  /* background-color: #777; */
+  border-radius: 10px;
+  background: rgba(8, 93, 94, 0.2);
+}
+.jsPlumb .element .content ol {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  height: 100%;
+  letter-spacing: -1.2px;
+}
+.jsPlumb .element .content ol li {
+  line-height: 1.8;
+}
+.jsPlumb .element .content ol li b {
+  font-size: 14px;
+  padding: 0px 4px;
+}
+.jsPlumb .element.maintain {
+  border: 1px solid #F39C12;
+  color: #F39C12;
+}
+.jsPlumb .element.todo {
+  border: 1px solid #9e9e9e;
+  color: #9e9e9e;
+}
+.jsPlumb .element.doing {
+  border: 1px solid #fdd835;
+  color: #fdd835;
+}
+.jsPlumb .words {
+  text-align: left;
+  padding: 50px;
+  background-color: white;
+}
+.jsPlumb .code {
+  border: 1px solid #456;
+}
+.jsPlumb .logo {
+  font-size: 30px;
+  color: #1f1f1f;
+  text-shadow: 1px 1px #ccc;
+  float: left;
+  width: 154px;
+  height: 44px;
+  background-position: 0px 5px;
+}
+.jsPlumb .commands {
+  margin-bottom: 10px;
+}
+.jsPlumb .commands:hover {
+  z-index: 10000;
+}
+.jsPlumb a,
+.jsPlumb a:visited {
+  text-decoration: none;
+  color: black;
+  border-radius: 0.2em;
+  -webkit-transition: color 0.15s ease-in;
+  -moz-transition: color 0.15s ease-in;
+  -o-transition: color 0.15s ease-in;
+  transition: color 0.15s ease-in;
+}
+.jsPlumb a:hover {
+  color: #7AB02C;
+}
+.jsPlumb a:active {
+  color: #FF2300;
+}
+.jsPlumb .menu {
+  background-color: #fff;
+  float: right;
+  font-size: 12px;
+}
+.jsPlumb .menu a {
+  margin-right: 19px;
+}
+.jsPlumb #render {
+  background-color: #fff;
+}
+.jsPlumb #explanation {
+  background-color: #fff;
+}
+.jsPlumb .otherLibraries {
+  display: inline;
+}
+.jsPlumb .selected {
+  color: orange !important;
+}
+.jsPlumb .element {
+  font-size: 13px;
+  padding: 8px;
+  background-color: #0b8284;
+  border-width: 0px;
+  border-style: solid;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.11);
+  -o-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.11);
+  -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.11);
+  -moz-border-radius: 0.5em;
+  /*border-radius: 50%;*/
+  position: absolute;
+  color: #ffffff;
+  padding: 2px;
+  -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+  -moz-transition: -moz-box-shadow 0.15s ease-in;
+  -o-transition: -o-box-shadow 0.15s ease-in;
+  transition: box-shadow 0.15s ease-in;
+}
+.jsPlumb .element:hover {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -o-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  border: 1px solid orange;
+  color: orange;
+}
+.jsPlumb .element a {
+  font-family: helvetica;
+}
+.jsPlumb path,
+.jsPlumb ._jsPlumb_endpoint {
+  cursor: pointer;
+}
+.jsPlumb cmd {
+  color: white;
+  margin-right: 25px;
+}
+.jsPlumb cmd:hover {
+  color: #FF2300;
+  text-decoration: underline;
+}
+.jsPlumb cmd:active {
+  color: #FF2300;
+}
+.jsPlumb .label {
+  font-size: 13px;
+  padding: 8px;
+}
+.jsPlumb .component {
+  border: 1px solid #346789;
+  border-radius: 0.5em;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  background-color: white;
+  color: black;
+  padding: 0.5em;
+  font-size: 0.8em;
+}
+.jsPlumb .component:hover {
+  border: 1px solid #123456;
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -o-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.33);
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.jsPlumb .demo-links,
+.jsPlumb .library-links {
+  position: fixed;
+  right: 0;
+  top: 44px;
+  font-size: 11px;
+  background-color: white;
+  opacity: 0.8;
+  padding-right: 10px;
+  padding-left: 5px;
+  text-transform: uppercase;
+  z-index: 100001;
+}
+.jsPlumb .demo-links i,
+.jsPlumb .library-links i {
+  padding: 4px;
+}
+.jsPlumb .demo-links div,
+.jsPlumb .library-links a {
+  display: inline;
+  margin-right: 7px;
+  margin-left: 7px;
+}
+.jsPlumb .library-links {
+  right: 515px;
+  height: 19px;
+  line-height: 19px;
+}
+.jsPlumb .current-library {
+  color: #7AB02C !important;
+}
+.jsPlumb ._jsPlumb_connector {
+  z-index: 18;
+}
+.jsPlumb ._jsPlumb_endpoint {
+  z-index: 19;
+}
+.jsPlumb .jsPlumb ._jsPlumb_overlay {
+  z-index: 20;
+}
+.jsPlumb .aLabel {
+  background-color: white;
+  padding: 0.4em;
+  font: 12px sans-serif;
+  color: #444;
+  z-index: 21;
+  border: 1px dotted gray;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  cursor: pointer;
+}
+.jsPlumb .aLabel._jsPlumb_hover {
+  background-color: #5C96BC;
+  color: white;
+  border: 1px solid white;
+}
+.jsPlumb .clearfix {
+  *zoom: 1;
+}
+.jsPlumb .clearfix:before,
+.jsPlumb .clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.jsPlumb .clearfix:after {
+  clear: both;
+}
+.jsPlumb .hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.jsPlumb .input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.label {
+  text-align: center;
+  z-index: 24;
+  cursor: pointer;
+  box-shadow: 2px 2px 19px #aaa;
+  -o-box-shadow: 2px 2px 19px #aaa;
+  -webkit-box-shadow: 2px 2px 19px #aaa;
+  -moz-box-shadow: 2px 2px 19px #aaa;
+}

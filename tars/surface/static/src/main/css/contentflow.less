@@ -1,0 +1,253 @@
+/* ========== ContentFlow ========== */
+
+
+/*
+ * default style to look nice
+ */
+
+.ContentFlow {
+  .flow {
+    /*border: 1px solid green;*/
+    .item{
+      cursor: pointer;
+      canvas.content {
+        height: 100%;
+        width: 100%;
+        /*border: 1px solid yellow;*/
+      }
+      img.content {
+        /*border: 1px solid yellow;*/
+        width: 100%;
+      }
+      img.reflection,canvas.reflection {
+        width: 100%;
+      }
+      &.active {
+        cursor: default;
+      }
+      .caption {
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        max-height: 30%;
+        bottom: 10%;
+        background: url(../images/1x1_0.5_black.png);
+        width: 100%;
+      }
+      a{
+        .this-a(){
+          text-decoration: none;
+          /*color: white;*/
+          font-style: italic;
+          font-size: 0.8em;
+        }
+        .this-a();
+        &:link,&:visited,&:active,&:hover{
+          .this-a();
+        }
+        
+      }
+      .caption{
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  /* ----- scrollbar ----- */
+  .scrollbar {
+    width: 50%;
+    margin: 0px auto;
+    margin-top: 10px;
+    height: 16px;
+    background: url(../images/scrollbar_white.png) left center repeat-x;
+    position: relative;
+    overflow: visible;
+    .slider {
+      width: 16px;
+      height: 16px;
+      background: url(../images/slider_white.png) center center no-repeat;
+      cursor: move;
+      .position {
+        top: 120%;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+  .globalCaption {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    height: 20px;
+    margin: 2em auto;
+    a{
+      .this-a(){
+        text-decoration: none;
+        color: white;
+        font-style: italic;
+        font-size: 0.8em;
+      }
+      .this-a();
+      &:link,&:visited,&:active,&:hover{
+        .this-a();
+      }
+    }
+    .caption a:hover {
+      text-decoration: underline;
+    }
+  }
+  .loadIndicator {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background: transparent;
+    .indicator {
+      background: url(../images/loader.gif) center center no-repeat;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* only for IE <= 6 and a alphatransparent slider image */
+* html .ContentFlow {
+  .flow .item .caption {
+    background-image: none;
+    filter: ~"progid: DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='../images/1x1_0.5_black.png')";
+  }
+  .scrollbar .slider {
+    background-image: none;
+    .virtualSlider {
+      filter:~" progid: DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='../images/slider_white.png')";
+      height: 100%;
+    }
+  }
+  .loadIndicator .indicator {
+    height: 100px;
+  }
+}
+
+/* ========== ContentFlow ========== */
+
+
+/* 
+ * This is the basic CSS file needed for the correct functioning of ContentFlow.
+ * DON'T CHANGE IT.
+ *
+ */
+
+.ContentFlow {
+  position: relative;
+  /* needed so overlay dimensions are constrained to the ContentFlow */
+  overflow: hidden;
+  * {
+    margin: 0px;
+    padding: 0px;
+    /*border: none;*/
+  }
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+  .mouseoverCheckElement {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: 0px;
+    /*display: none;*/
+    visibility: hidden;
+  }
+  &:hover .mouseoverCheckElement {
+    left: 1px;
+    /*width: 1px;*/
+    /*left: -1px;*/
+    /*background-color: red;*/
+  }
+  .flow {
+    position: relative;
+    /* needed so that items can be positioned relative to flow*/
+    /* z-index: 0; */
+    /* need so every item has a z-index relative to the flow-box */
+    visibility: hidden;
+    /* needed so that content is hidden while loading */
+    width: 100%;
+    /* needed for IE6 */
+    margin: 0 auto;
+    &.hidden {
+      visibility: hidden;
+    }
+    .item {
+      position: absolute;
+      /* needed */
+      visibility: hidden;
+      top: 0px;
+      left: 0px;
+      .content {
+        display: block;
+      }
+      div.content {
+        width: 100%;
+        height: 100%;
+      }
+      .label {
+        display: none;
+      }
+      .reflection {
+        display: block;
+      }
+      canvas.reflection {
+        margin-top: -1px;
+        /* for FF */
+      }
+      .caption {
+        position: absolute;
+        /* needed */
+        display: none;
+        /* needed to hide it on inactive items */
+      }
+      &.active .caption {
+        /*display: block;*/
+        /* uncomment to show caption inside item */
+      }
+    }
+  }
+
+
+}
+
+
+/* ----- scrollbar ----- */
+
+.ContentFlow {
+  .scrollbar {
+    position: relative;
+    /* needed for z-index */
+    z-index: 1;
+    /* set above flow */
+    visibility: hidden;
+     .slider {
+      position: absolute;
+      /* needed */
+      .position {
+        position: absolute;
+        /* needed */
+        text-align: center;
+      }
+    }
+  }
+  .globalCaption {
+    position: relative;
+    /* needed for z-index */
+    z-index: 1;
+    /* set above flow */
+  }
+  .loadIndicator {
+    position: absolute;
+    /* needed */
+    z-index: 1000;
+    /* set above everything */
+  }
+}

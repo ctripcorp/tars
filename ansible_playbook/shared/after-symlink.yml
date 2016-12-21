@@ -1,0 +1,12 @@
+# Performs symlink exchange
+- name: ANSISTRANO | Ensure tomcat webapps ROOT link
+  file:
+    state: link
+    path: "/usr/share/tomcat/webapps/ROOT"
+    src: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+
+# - name: ANSISTRANO | Ensure tomcat restarted
+#   service: name=tomcat state=restarted
+
+- name: Manage the state of a program or group of programs running via supervisord
+  supervisorctl: name=tomcat state=restarted

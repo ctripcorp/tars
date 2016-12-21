@@ -1,0 +1,11 @@
+{
+  "name": "highstock-release",
+  "description": "Official shim repo for Highstock releases.",
+  "homepage": "http://www.highcharts.com",
+  "version": "v2.1.10",
+  "main": "highstock.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/highcharts/highstock-release"
+  }
+}

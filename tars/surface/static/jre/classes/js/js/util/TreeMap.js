@@ -1,0 +1,1 @@
+$import("js.util.Map","BootstrapClassLoader"),Class.forName({name:"class js.util.TreeMap extends js.util.Map"});

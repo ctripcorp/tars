@@ -1,0 +1,15 @@
+{
+  "name": "au-proxy-liteaccordion",
+  "version": "2.2.0",
+  "main": [
+    "./js/liteaccordion.jquery.js",
+    "./css/liteaccordion.css",
+    "./css/bg_noise.png",
+    "./css/bg_stitch.png"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jquery-easing-original": "~1.3.2",
+    "jquery": "latest"
+  }
+}

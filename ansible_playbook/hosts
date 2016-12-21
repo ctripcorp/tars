@@ -1,0 +1,8 @@
+[all:vars]
+env=matrix
+login_user=root
+gulp_target_env=matrix
+
+
+[webservers]
+10.18.5.26

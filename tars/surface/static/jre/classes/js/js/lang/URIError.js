@@ -1,0 +1,1 @@
+$import("js.lang.Throwable","BootstrapClassLoader"),Class.forName({name:"class URIError",alias:"js.lang.URIError","private name":"js.lang.URIError","private number":7,URIError:function(){}});

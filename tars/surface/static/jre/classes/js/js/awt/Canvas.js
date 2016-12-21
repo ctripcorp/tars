@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"class js.awt.Canvas extends js.awt.Component","public Canvas":function(){}});

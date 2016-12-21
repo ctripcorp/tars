@@ -1,0 +1,6 @@
+frontend_build:
+  image: node:6
+  volumes:
+    - .:/code
+  working_dir: /code
+  command: make frontend

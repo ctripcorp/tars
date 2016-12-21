@@ -1,0 +1,123 @@
+@charset 'utf-8';
+.cover{
+	@arrow-top-right:'arrow-top-right.png';
+	@arrow-bottom-right:'arrow-bottom-right.png';
+	@arrow-top-left:'arrow-top-left.png';
+	@arrow-bottom-left:'arrow-bottom-left.png';
+	@arrow-top-right2:'arrow-top-right2.png';
+	@arrow-bottom-right2:'arrow-bottom-right2.png';
+	@arrow-top-left2:'arrow-top-left2.png';
+	@arrow-bottom-left2:'arrow-bottom-left2.png';
+	
+	.standard(){
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	}
+	.arrow(@img-name){
+		background-image: url('../images/@{img-name}');
+		background-repeat: no-repeat;
+		width: 64px;
+		height: 48px;
+	}
+	.standard;
+	z-index: 1000;
+	font-size: 1em;
+	color: #ffffff;
+	.shadow {
+		.standard;
+		filter: alpha(opacity=64);
+		opacity: 0.64;
+		background-color: #000;
+	}
+	.content{
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		margin-top: 15%;
+		color: #fff;
+		background: transparent;
+	}
+	.title {
+		font-size: 3em;
+		text-align: center;
+		white-space: nowrap;
+		padding: 8px;
+		margin-top: 24px;
+		display: block;
+	}
+	.desc {
+		font-size: 1em;
+		text-align: left;
+		white-space: nowrap;
+		margin-top: 24px;
+		padding: 8px;
+		display: block;
+		p{
+			margin-left: 16px;
+			color: #fff;
+		}
+	}
+	.tips {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	.tip {
+		position: absolute;
+	}
+	.arrow-top-right{
+		.arrow(@arrow-top-right);
+	}
+	.arrow-bottom-right{
+		.arrow(@arrow-bottom-right);
+	}
+	.arrow-top-left{
+		.arrow(@arrow-top-left);
+	}
+	.arrow-bottom-left{
+		.arrow(@arrow-bottom-left);
+	}
+	.arrow-top-right2{
+		.arrow(@arrow-top-right2);
+	}
+	.arrow-bottom-right2{
+		.arrow(@arrow-bottom-right2);
+	}
+	.arrow-top-left2{
+		.arrow(@arrow-top-left2);
+	}
+	.arrow-bottom-left2{
+		.arrow(@arrow-bottom-left2);
+	}
+	.summary {
+		max-width: 256px;
+	}
+}
+
+.cover-ref-z {
+  z-index: 30000!important;
+}
+
+.cover-ref {
+  border: 4px dashed #e51c23!important;
+}
+
+.welcome {
+  z-index: 9999!important;
+}
+
+.welcome-ref {
+  z-index: 60000!important;
+  border: 4px dashed #e51c23!important;
+  pointer-events: none;
+}
+
+.welcome-ref-pos {
+  position: relative!important;
+}
+
+.welcome-ref-z {
+  z-index: 0!important;
+}

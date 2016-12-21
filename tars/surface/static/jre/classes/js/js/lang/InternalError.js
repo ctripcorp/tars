@@ -1,0 +1,1 @@
+Class.forName({name:"class js.lang.InternalError extends js.lang.Error","private name":"js.lang.InternalError","private number":99});

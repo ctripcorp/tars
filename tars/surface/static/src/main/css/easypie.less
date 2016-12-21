@@ -1,0 +1,52 @@
+@charset 'utf-8';
+.easypie {
+	.count-it(){
+		display: inline-block;
+		z-index: 2;
+		line-height: 96px;
+		font-size: 2em;
+	}
+	.count-it-after(@content){
+		content:@content;
+		margin-left: 0.1em;
+		font-size: .5em;
+	}
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	font-weight: 100;
+	width: 100%;
+	/*96px*/
+	height: 100%;
+	/*96px*/
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.percent{
+		.count-it;
+		&:after{
+			.count-it-after('%');
+		}
+	}
+	.second{
+		.count-it;
+		&:after{
+			.count-it-after('s');
+		}
+	}
+	
+	&.lg{
+		width: 196px;
+		height: 196px;
+		.percent,.second {
+			line-height: 196px;
+			font-size: 6em;
+			&:after{
+				margin-left: 0.4em;
+				font-size: 0.6em;
+			}
+		}
+	}
+}

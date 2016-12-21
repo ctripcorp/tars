@@ -1,0 +1,1 @@
+$import("js.lang.Throwable","BootstrapClassLoader"),Class.forName({name:"class ReferenceError",alias:"js.lang.ReferenceError","private name":"js.lang.ReferenceError","private number":4,ReferenceError:function(){}});

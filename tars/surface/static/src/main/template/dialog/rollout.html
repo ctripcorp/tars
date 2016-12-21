@@ -1,0 +1,55 @@
+<div id="window--2" level="-2" initial="false" class="au-dialog-panel" style="z-index: 10001; display: none;">
+  <div class="au-dialog-view" style="z-index: 10002;" ng-controller="com.ctrip.tars.group.rollout.Controller" id="com-ctrip-tars-group-rollout-Controller">
+    <div ng-show="configration" class="au-dialog-view-layout">
+
+      <!-- rollout start -->
+      <div class="flat-hat" style="height: 272px; position: absolute; left: 8px; top: 8px; right: 8px; bottom: 8px; background: #11cfd2;">
+      </div>
+      <div class="flat-shirt">
+        <div class="flowstep-wapper flowstep-wapper-static scope-{{ $id }}">
+          <div class="flowstep flowstep-static">
+            <ol class="flowstep-steps">
+              <li class="step-{{step.progress}} step-status-{{ step.status }}" ng-repeat="step in steps" ng-style="{ 'left': '{{100*$index/(steps.length-1)}}%' }">
+                <div class="step-no">{{$index + 1}}</div>
+                <div class="step-name">
+                  {{step.name}}
+                </div>
+              </li>
+            </ol>
+            <div class="flowstep-progress">
+              <p class="flowstep-progress-bar">
+                <span class="flowstep-progress-highlight error" style="width:{{getDoingError()}}%;" ng-style="{ 'width': '{{getDoingError()}}%'}"></span>
+                <!-- -->
+
+                <span class="flowstep-progress-highlight success" style="width:{{getDoingSuccess()}}%;" ng-style="{ 'width': '{{getDoingSuccess()}}%' }"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flat-trouser">
+        <div class="flat-panel flat-card" style="width: 80%; left: 10%;">
+          <!-- style="height: {{ size.height + 65 }}px;" ng-style="{ 'height': '{{ size.height + 65 }}px' }" -->
+          <ng-include src="'template!dialog/rollout/1.html'" init-variable="" ng-show="getIndexOfDoing() == 0"></ng-include>
+          <ng-include src="'template!dialog/rollout/2.html'" init-variable="" ng-show="getIndexOfDoing() == 1"></ng-include>
+          <ng-include src="'template!dialog/rollout/3.html'" init-variable="" ng-show="getIndexOfDoing() == 2"></ng-include>
+
+          <em class='au-dialog-scroll-top' role='scroll-top'><i class='glyphicon '></i></em>
+        </div>
+      </div>
+      <div class="flat-shoes" style="padding: 5px 10%;">
+        <div>
+          <p style="margin: 0px 8px; color: red; text-align: right; font-size: 12px; line-height: 24px;">{{ validateMsg }}</p>
+        </div>
+        <div style="height: 50px;">
+          <a ink href="javascript:void(0)" class="btn btn-{{command.theme}} {{command.position}}" role="button" ng-repeat="command in getActiveCommands() track by command._hashCode" ng-click="command.click(this, $event)" ng-disabled="command.disabled || !command.active" style="margin: 8px; border-radius: 0px;"><i class="fa fa-{{command.icon}}"></i> &nbsp;&nbsp; {{command.text}}</a>
+          <!--ng-class="{ true: 'disabled' }[ command.disabled ]"-->
+        </div>
+      </div>
+      <!-- rollout end -->
+
+    </div>
+  </div>
+  <div class="au-dialog-close" style="z-index: 10009;"></div>
+  <em class="au-dialog-scroll-top" role="scroll-top" style="z-index: 10009;"><i class="glyphicon "></i></em>
+</div>

@@ -1,0 +1,53 @@
+<div class="wrapper" ng-controller="com.ctrip.tars.app.Controller">
+  <div class="wrapper" ng-controller="com.ctrip.tars.deployments.single.Controller">
+    <concern class="bg-teal-gradient" style="position: relative;">
+      <!--
+      <div class="jumbotron">
+        <div class="component"></div>
+        <em role="compress-original" style="position: fixed; bottom: 8px; left: 8px; z-index: 9999; font-size: 16px; line-height: 16px;">
+          <i class="fa fa-compress"></i>
+        </em>
+      </div>
+
+      <div class="global-tabpanels bg-teal-gradient">
+        <div class="global-tabheader container-fluid">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 hidden-xs hidden-sm">
+              <div class="box-header">
+                <h4 class="box-title" style="line-height: 36px;">
+                  <ol class="breadcrumb">
+                    <li>Tars</li>
+                    <li ng-repeat="crumb in breadcrumb">{{ crumb.text }}</li>
+                  </ol>
+                </h4>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <ol class="tabtitles">
+                <li ng-repeat="tab in getTabValues()" ng-class="{true:'active'}[isActiveTab(tab.id)]">
+                  <a href="javascript:void(0)" ng-click="switchTab(tab.id)">
+                    <div class="content">{{tab.name}}</div>
+                  </a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="global-tabcontent">
+          <ng-include src="'template!group.html'" init-variable="" ng-if="isActiveTab('app')"></ng-include>
+          <ng-include src="'template!pools.html'" init-variable="" ng-if="isActiveTab('pools')"></ng-include>
+          <ng-include src="'template!cis.html'" init-variable="" ng-if="isActiveTab('cis')"></ng-include>
+        </div>
+      </div>
+      -->
+      <div class="global-tabpanels">
+        <div class="global-tabcontent">
+          <ng-include src="'template!group.html'" init-variable=""></ng-include>
+        </div>
+      </div>
+      <countdown></countdown>
+      <cover></cover>
+    </concern>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+@charset 'utf-8';
+.animate.ng-hide-add {
+  -webkit-transition: all linear 0s;
+  transition: all linear 0s;
+  opacity: 1;
+}
+.animate.ng-hide-remove {
+  -webkit-transition: all linear 0s;
+  transition: all linear 0s;
+}
+.animate.ng-hide-remove.ng-hide-add {
+  opacity: 0;
+}
+.animate.ng-hide-add-active {
+  -webkit-transition: 0.5s linear 0s;
+  transition: 0.5s linear 0s;
+  opacity: 0;
+}
+.animate.ng-hide-remove-active {
+  -webkit-transition: 0.5s linear 0s;
+  transition: 0.5s linear 0s;
+}
+.animate.ng-hide-remove-active.ng-hide-add-active {
+  opacity: 1;
+}
+.animate.fast.ng-hide-add-active,
+.animate.fast.ng-hide-remove-active {
+  -webkit-transition: 1s linear 0s;
+  transition: 1s linear 0s;
+}
+.animate.height {
+  overflow: hidden;
+}
+.animate.height.ng-hide-add {
+  height: auto;
+}
+.animate.height.ng-hide-add.ng-hide-add-active {
+  height: 0;
+}
+.animate.height.ng-hide-remove {
+  height: 0;
+}
+.animate.height.ng-hide-remove.ng-hide-remove-active {
+  height: auto;
+}

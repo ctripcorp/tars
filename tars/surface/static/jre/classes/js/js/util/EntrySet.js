@@ -1,0 +1,1 @@
+$import("js.util.Set","BootstrapClassLoader"),Class.forName({name:"class js.util.EntrySet extends js.util.Set","private _element":null,EntrySet:function(t){this._element=t},iterator:function(){return new js.util.HashIterator(this._element)},size:function(){return this._element.size()}});

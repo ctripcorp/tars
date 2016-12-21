@@ -1,0 +1,110 @@
+@charset 'utf-8';
+ul.bubbles {
+	position: relative;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	font-family: "Microsoft YaHei", "Comic Sans MS", cursive;
+	.bubble {
+		position: relative;
+		padding: 0px;
+	}
+	.content {
+		position: relative;
+		background: transparent;
+		overflow: hidden;
+		&.right {
+			padding: 8px 18px 8px 8px;
+		}
+		&.left {
+			padding: 8px 8px 8px 18px;
+		}
+	}
+	.bubble-1 {
+		background-color: #000000;
+	}
+	.before(){
+		position: absolute;
+		content: "\00a0";
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+	}
+	.left{
+		.before{
+			.before;
+			border-color: transparent #A6DADC transparent transparent;
+			border-width: 8px 18px 8px 0;
+			left: 0px;
+		}
+		.content-inner{
+			h3 {
+				text-align: left;
+			}
+			p {
+				text-align: left;
+				margin-left: 16px;
+				text-indent: 0px;
+			}
+		}
+	}
+	.right{
+		.before{
+			.before;
+			border-color: transparent transparent transparent #A6DADC;
+			border-width: 8px 0px 8px 18px;
+			right: 0px;
+		}
+		.content-inner{
+			h3 {
+				text-align: right;
+			}
+			p {
+				text-align: right;
+				margin-right: 16px;
+				text-indent: 0px;
+			}
+		}
+	}
+	.top .before {
+		top: 28px;
+	}
+	.center .before {
+		top: 50%;
+	}
+	.bottom .before {
+		bottom: 28px;
+	}
+	.content-inner {
+		min-height: 80px;
+		position: relative;
+		padding: 8px;
+		color: #333;
+		border: none;
+		/* border-left: 5px solid #41838e; */
+		/* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+		background-color: rgba(166, 218, 220, 1);
+		border-radius: 8px;
+		background-image: -moz-linear-gradient(rgba(166, 218, 220, 0.6), rgba(166, 218, 220, 0) 30px);
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(166, 218, 220, 0.6)), color-stop(1, rgba(166, 218, 220, 1)));
+		-moz-box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+		-webkit-box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+		box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+		h3 {
+			font-size: 12px;
+			font-weight: 600;
+			padding: 8px;
+			color: #274D54;
+			margin: 0px;
+		}
+		p {
+			font-size: 12px;
+			font-weight: 100;
+			color: #41838E;
+		}
+	}
+}
+
+@media screen and (max-width: 850px) {}
+
+@media screen and (max-width: 540px) {}

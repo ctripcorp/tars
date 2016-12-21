@@ -1,0 +1,32 @@
+<div class="wrapper" ng-controller="com.ctrip.tars.group.Controller">
+
+  <div class="box box-solid" ripple style="margin-bottom: 0px; background: transparent;">
+
+    <div class="box-header">
+      <h4 class="box-title text-overflow" style="padding-left: 16px; height: 48px;">
+        <ol class="breadcrumb">
+          <li>Tars</li>
+          <li ng-repeat="crumb in breadcrumb">{{ crumb.text }}</li>
+        </ol>
+      </h4>
+    </div>
+
+    <concern-center>
+      <ng-include src="'template!deployment.html'" init-variable=""></ng-include>
+    </concern-center>
+
+    <!--
+    <postmark ng-if="isHistoryView()" ng-init="date = deployment.updatedAt.substring(0,10);time = deployment.updatedAt.substring(11)" style="right: 224px; top: 48px;"></postmark>
+    -->
+
+    <concern-south>
+      <ng-include src="'template!deployment/tabpanel.html'" init-variable=""></ng-include>
+    </concern-south>
+
+    <ng-include src="'template!dialog/rollout.html'" init-variable=""></ng-include>
+    <ng-include src="'template!dialog/rollback.html'" init-variable=""></ng-include>
+    <ng-include src="'template!dialog/batches.html'" init-variable=""></ng-include>
+
+  </div>
+
+</div>

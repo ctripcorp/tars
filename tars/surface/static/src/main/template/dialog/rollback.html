@@ -1,0 +1,34 @@
+<div id="window--3" level="-3" initial="false" class="au-dialog-panel" style="z-index: 10001; display: none;">
+  <div class="au-dialog-view" style="z-index: 10002;" ng-controller="com.ctrip.tars.group.rollback.Controller" id="com-ctrip-tars-app-rollback-Controller">
+    <div ng-show="configration" class="au-dialog-view-layout">
+
+      <!-- rollback start -->
+      <div class="flat-hat" style="height: 272px; position: absolute; left: 8px; top: 8px; right: 8px; bottom: 8px; background: #11cfd2;">
+      </div>
+      <div class="flat-shirt" style="height: 50px;">
+      </div>
+      <div class="flat-trouser">
+        <div class="flat-panel flat-card" style="width: 80%; left: 10%;">
+          <!-- style="height: {{ size.height + 65 }}px;" ng-style="{ 'height': '{{ size.height + 65 }}px' }" -->
+
+          <ng-include src="'template!dialog/rollback/preview.html'" init-variable=""></ng-include>
+
+          <em class='au-dialog-scroll-top' role='scroll-top'><i class='glyphicon '></i></em>
+        </div>
+      </div>
+      <div class="flat-shoes" style="padding: 5px 10%;">
+        <div>
+          <p style="margin: 0px 8px; color: red; text-align: right; font-size: 12px; line-height: 24px;">{{ validateMsg }}</p>
+        </div>
+        <div style="height: 50px;">
+          <a ink href="javascript:void(0)" class="btn btn-{{command.theme}} {{command.position}}" role="button" ng-repeat="command in getActiveCommands() track by command._hashCode" ng-click="command.click(this, $event)" ng-disabled="command.disabled || !command.active" style="margin: 8px; border-radius: 0px;"><i class="fa fa-{{command.icon}}"></i> &nbsp;&nbsp; {{command.text}}</a>
+          <!--ng-class="{ true: 'disabled' }[ command.disabled ]" -->
+        </div>
+      </div>
+      <!-- rollback end -->
+
+    </div>
+  </div>
+  <div class="au-dialog-close" style="z-index: 10009;"></div>
+  <em class="au-dialog-scroll-top" role="scroll-top" style="z-index: 10009;"><i class="glyphicon "></i></em>
+</div>

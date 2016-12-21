@@ -1,0 +1,13 @@
+server:
+  build: .
+  dockerfile: Dockerfile-Tomcat
+  volumes:
+    - ./files/tomcat/etc/supervisord.d/:/etc/supervisord.d
+
+code:
+  build: ..
+  dockerfile: Dockerfile-demo
+  volumes:
+    - ../:/code
+    - ./files/code/etc/ssh/ssh_config:/etc/ssh/ssh_config
+    - ./files/code/etc/ansible/roles:/etc/ansible/roles

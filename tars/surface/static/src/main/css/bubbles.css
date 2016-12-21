@@ -1,0 +1,99 @@
+@charset 'utf-8';
+ul.bubbles {
+  position: relative;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Microsoft YaHei", "Comic Sans MS", cursive;
+}
+ul.bubbles .bubble {
+  position: relative;
+  padding: 0px;
+}
+ul.bubbles .content {
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+ul.bubbles .content.right {
+  padding: 8px 18px 8px 8px;
+}
+ul.bubbles .content.left {
+  padding: 8px 8px 8px 18px;
+}
+ul.bubbles .bubble-1 {
+  background-color: #000000;
+}
+ul.bubbles .left .before {
+  position: absolute;
+  content: "\00a0";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-color: transparent #A6DADC transparent transparent;
+  border-width: 8px 18px 8px 0;
+  left: 0px;
+}
+ul.bubbles .left .content-inner h3 {
+  text-align: left;
+}
+ul.bubbles .left .content-inner p {
+  text-align: left;
+  margin-left: 16px;
+  text-indent: 0px;
+}
+ul.bubbles .right .before {
+  position: absolute;
+  content: "\00a0";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-color: transparent transparent transparent #A6DADC;
+  border-width: 8px 0px 8px 18px;
+  right: 0px;
+}
+ul.bubbles .right .content-inner h3 {
+  text-align: right;
+}
+ul.bubbles .right .content-inner p {
+  text-align: right;
+  margin-right: 16px;
+  text-indent: 0px;
+}
+ul.bubbles .top .before {
+  top: 28px;
+}
+ul.bubbles .center .before {
+  top: 50%;
+}
+ul.bubbles .bottom .before {
+  bottom: 28px;
+}
+ul.bubbles .content-inner {
+  min-height: 80px;
+  position: relative;
+  padding: 8px;
+  color: #333;
+  border: none;
+  /* border-left: 5px solid #41838e; */
+  /* box-shadow: 0 4px 6px rgba(0,0,0,0.1); */
+  background-color: #a6dadc;
+  border-radius: 8px;
+  background-image: -moz-linear-gradient(rgba(166, 218, 220, 0.6), rgba(166, 218, 220, 0) 30px);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(166, 218, 220, 0.6)), color-stop(1, #a6dadc));
+  -moz-box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+  -webkit-box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+  box-shadow: 1px 1px 2px rgba(166, 218, 220, 0.3);
+}
+ul.bubbles .content-inner h3 {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px;
+  color: #274D54;
+  margin: 0px;
+}
+ul.bubbles .content-inner p {
+  font-size: 12px;
+  font-weight: 100;
+  color: #41838E;
+}

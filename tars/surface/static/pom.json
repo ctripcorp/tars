@@ -1,0 +1,15 @@
+{
+	"group": "com.ctrip",
+	"artifact": "tars",
+	"name": "tars",
+	"description": "tars surface",
+	"authors": [
+		"lico"
+	],
+	"license": "MIT",
+	"private": true,
+	"debug": true,
+	"skin": "default",
+	"version": "1.2.26",
+	"target": "local"
+}

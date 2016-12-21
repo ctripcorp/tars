@@ -1,0 +1,4 @@
+# ansible-galaxy install -r requirements.yml
+
+# carlosbuenosvinos.ansistrano-deploy
+- src: carlosbuenosvinos.ansistrano-deploy

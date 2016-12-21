@@ -1,0 +1,13 @@
+---
+- name: Check can skip deploy for tomcat app
+  hosts: all
+  remote_user: "{{ login_user }}"
+  sudo: True
+  vars:
+    # ansistrano_deploy_from: "/Users/cy/vagrant/tarstest/tars"
+    ansistrano_release_version: "{{ release_version }}"
+    ansistrano_deploy_via: "download"
+    ansistrano_get_url: "{{ package_url }}"
+    ansistrano_allow_anonymous_stats: False
+  roles:
+    - { role: skip }

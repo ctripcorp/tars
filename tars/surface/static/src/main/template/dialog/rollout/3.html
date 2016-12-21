@@ -1,0 +1,165 @@
+<div class="box ng-scope" style="margin-bottom: 0px;">
+  <div class="box-header">
+    <h3 class="box-title"><i class="fa fa-save"></i>&nbsp;确认发布</h3>
+  </div>
+  <div class="box-body container-fluid mscrollbar" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }">
+    <div class="row">
+      <div class="col-md-12">
+        <label>应用名称：</label>{{ app.name }} （ AppId：{{ app.id }}）
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>共发布至：</label>{{ getServersCount() }} 台服务器
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>编译包名称：</label>{{ getSelectedBuilder().name }}( {{ getDeploymentVersion(getSelectedBuilder()) }} )
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset style="margin: 8px 1px;">
+          <legend>配置策略</legend>
+          <form role="form" class="container-fluid">
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>group：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.group.name }} （ {{ settings.values.group.id }} ）</b></p>
+              </div>
+            </div>
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>忽略点火：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.ignoreVerifyResult }}</b></p>
+              </div>
+            </div>
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>重启应用程序池：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.restartAppPool }} </b></p>
+              </div>
+            </div>
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>批次设置：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b ng-if="settings.isValid('batchPattern')"><!--{{ settings.values.batchPattern }}--> {{ getPreviewBatches(this) }}</b>
+                </p>
+              </div>
+            </div>
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>批次间等待时间：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.pauseTime }}</b> 分钟</p>
+              </div>
+            </div>
+            <!--
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>XMon告警等待：</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{ settings.values.waitForXmon }}</p>
+                                <p ng-show="settings.getValue('waitForXmon') == 1"> Rolling至<b> {{ settings.values.xmonThreshold }}</b>%(第S台) 后等待 <b>{{ settings.values.xmonWaittime }}</b> 分钟</p>
+                            </div>
+                        </div>
+                        -->
+            <!--
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>Rolling失败数量超过</label>
+                            </div>
+                            <div class="col-md-8" style="padding-right: 168px;">
+                                <p><b>{{ settings.values.stopThreshold }} %(第T台)</b>&nbsp;后停止发布（Z&lt;=25）</p>
+                            </div>
+                        </div>
+                        -->
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>应用启动超时时间：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.startupTimeout }} </b> 分钟</p>
+              </div>
+            </div>
+
+            <div class="form-group2 row">
+              <div class="col-md-4">
+                <label>手动按批次执行rollout：</label>
+              </div>
+              <div class="col-md-8">
+                <p><b>{{ settings.values.manual }} </b></p>
+              </div>
+            </div>
+
+            <!--
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>点火验证URL列表：</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p><b>域名+虚拟目录+appinternals/components/arch-cframework-appinternals-components-initializationcomponent-initialization?format=json</b>
+                                </p>
+                            </div>
+                        </div>
+                        -->
+
+            <!--
+
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>点火验证耗时：</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p><b>{{ settings.values.verifyTimeout }}</b> 分钟</p>
+                            </div>
+                        </div>
+
+                        -->
+
+            <!--
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>点火失败处理方案：</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p><b>{{ settings.values.validateFailAction }}</b>
+                                </p>
+                            </div>
+                        </div>
+                        -->
+            <!--
+                        <div class="form-group2 row">
+                            <div class="col-md-4">
+                                <label>回退版本：</label>
+                            </div>
+                            <div class="col-md-8">
+                                <p><b>{{ settings.values.rollbackVersion }}</b>
+                                </p>
+                            </div>
+                        </div>
+                        -->
+
+          </form>
+        </fieldset>
+        <div class="summary-formula">上述配置在发布成功的情况下，生产Rolling过程约需XX分钟</div>
+      </div>
+    </div>
+  </div>
+</div>

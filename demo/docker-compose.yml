@@ -1,0 +1,72 @@
+server1:
+  extends:
+    service: server
+    file: ./docker-compose-common.yml
+  ports:
+    - "8001:8080"
+
+server2:
+  extends:
+    service: server
+    file: ./docker-compose-common.yml
+  ports:
+    - "8002:8080"
+
+
+server3:
+  extends:
+    service: server
+    file: ./docker-compose-common.yml
+  ports:
+    - "8003:8080"
+
+db:
+  image: mysql:5.7
+  ports:
+    - "3307:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=my-secret-pw
+    - MYSQL_DATABASE=tars
+    - MYSQL_USER=tars
+    - MYSQL_PASSWORD=test1234
+  volumes:
+    - ./files/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+backend:
+  image: redis
+
+es:
+  image: elasticsearch:5
+  ports:
+    - '9200:9200'
+
+worker:
+  extends:
+    file: ./docker-compose-common.yml
+    service: code
+  command: celery worker -A roll_engine -l info
+  environment:
+    - C_FORCE_ROOT=1
+    - DJANGO_SETTINGS_MODULE=tars.settings.docker
+  links:
+    - server1
+    - server2
+    - server3
+    - backend
+    - es
+    - db
+
+web:
+  extends:
+    file: ./docker-compose-common.yml
+    service: code
+  command: python manage.py runserver 0.0.0.0:8000 --settings=tars.settings.docker
+  ports:
+    - "8000:8000"
+  links:
+    - server1
+    - server2
+    - server3
+    - backend
+    - es
+    - db

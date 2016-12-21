@@ -1,0 +1,338 @@
+.au-dialog-shadow {
+    /*outline: 1px solid black;*/
+    
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: #000;
+    text-align: center;
+}
+
+.au-dialog-blur {
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none
+}
+
+.au-dialog-panel {
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+    position: absolute;
+    overflow: hidden;
+    font-size: 12px;
+    opacity: 0.95;
+}
+
+.au-dialog-close {
+    cursor: pointer;
+    position: absolute;
+    background: url('../images/icon-cross.png');
+}
+
+.au-dialog-view {
+    position: absolute;
+    overflow: auto;
+    background: #ffffff;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /*-webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.3);*/
+    /*-moz-box-shadow: 0 3px 7px rgba(0,0,0,0.3);*/
+    /*box-shadow: 0 3px 7px rgba(0,0,0,0.3);*/
+    
+    -webkit-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    outline: 0;
+    /*padding: 2px;*/
+    /*background: #181a1d;*/
+    /*box-shadow: 3px 3px 5px #000,-1px -1px 4px #000;*/
+    /*#87C4ED;*/
+    /*-webkit-box-shadow: 3px 3px 5px #000,-1px -1px 4px #000;*/
+    /*-moz-box-shadow: 3px 3px 5px #000,-1px -1px 4px #000;*/
+}
+
+.au-dialog-view-layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}
+
+.au-dialog-scroll-top {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px 4px rgba(0, 0, 0, 0.11);
+    width: 40px;
+    height: 40px;
+    font-weight: 100px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color: #757575;
+    background: #673ab7;
+    display: none;
+    background-image: url("../images/icon-up.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.au-dialog-layout-container {
+    width: 100%;
+    height: 100%;
+}
+
+.au-dialog-input-container {
+    /*padding: 4px;
+	border: 1px solid #cfcfcf;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;*/
+}
+
+.au-dialog-input-container.disabled {
+    background: rgb(235, 235, 228);
+}
+
+.au-dialog label.error .au-dialog-input-container {
+    border-color: #e51c23;
+}
+
+.au-dialog label.error .errormsg {
+    color: #e51c23;
+}
+
+.au-dialog-panel fieldset {
+    padding: 8px 8px 16px 8px;
+    border: 1px solid #cfcfcf;
+    background-color: #ffffff;
+    /*background-color:#f4f4f4;*/
+    
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.au-dialog-panel fieldset legend {
+    font-size: 15px;
+    font-weight: bold;
+    color: #242424;
+    width: auto;
+    border: 0;
+    margin-bottom: 5px;
+}
+
+.au-dialog-panel fieldset label {
+    text-align: inherit;
+    width: 100%;
+    padding: 6px 2px 2px 2px;
+    display: block;
+}
+
+.au-dialog-panel fieldset label span {
+    font-size: 12px;
+    color: #C0C0C0;
+    float: right;
+    line-height: 17px;
+    height: 17px;
+}
+
+.au-dialog-panel label {
+    line-height: 22px;
+}
+
+.au-dialog-panel .form-group {
+    margin-bottom: 0px;
+    padding: 4px;
+}
+
+.au-dialog-panel .form-group label {
+    margin-bottom: 4px;
+}
+
+.au-dialog-panel .form-group input {
+    height: 34px;
+    margin: 0px;
+}
+
+.au-dialog-panel .form-input {
+    padding: 8px;
+}
+
+.au-dialog-panel .form-input label {
+    margin-bottom: 0px;
+}
+
+.au-dialog-input-container input,
+.au-dialog-input-container select,
+.au-dialog-input-container textarea {
+    display: block;
+    /*border: 1px solid #E3E3E3;*/
+    /*background-color:#f4f4f4;*/
+    /*border: 0px none;*/
+    
+    color: #242424;
+    border: 1px solid #cfcfcf;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.au-dialog-input-container select:disabled,
+.au-dialog-input-container select.disabled {
+    background: rgb(235, 235, 228);
+    border: 1px solid #cfcfcf;
+}
+
+.au-dialog-text-input {
+    width: 100%;
+    height: 24px;
+    overflow: hidden;
+}
+
+.au-dialog-text-area {
+    width: 100%;
+    height: 80px;
+    overflow: auto;
+}
+
+.au-dialog-text-select {
+    width: 100%;
+    height: 26px;
+    overflow: hidden;
+}
+
+.au-dialog-infos {
+    background: #FFF;
+    color: #282828;
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.au-dialog-toolbar {
+    text-align: right;
+    padding: 8px;
+    width: 100%;
+}
+
+.au-dialog-button {
+    margin-right: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.au-dialog-button:hover,
+.au-dialog-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.au-dialog-button-read {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    /*background-color: #5bc0de;
+	 border-color: #46b8da;*/
+}
+
+.au-dialog-button-read:hover,
+.au-dialog-button-read:focus,
+.au-dialog-button-read:active {
+    color: #fff;
+    background-color: #47a447;
+    border-color: #398439;
+    /*background-color: #39b3d7;
+	 border-color: #269abc;*/
+}
+
+.au-dialog-button-update {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.au-dialog-button-update:hover,
+.au-dialog-button-update:focus,
+.au-dialog-button-update:active {
+    color: #fff;
+    background-color: #ed9c28;
+    border-color: #d58512;
+}
+
+.au-dialog-button-destory {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.au-dialog-button-destory:hover,
+.au-dialog-button-destory:focus,
+.au-dialog-button-destory:active {
+    color: #fff;
+    background-color: #d2322d;
+    border-color: #ac2925;
+}
+
+.au-dialog-button-create {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.au-dialog-button-create:hover,
+.au-dialog-button-create:focus,
+.au-dialog-button-create:active {
+    color: #fff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+}
+
+.au-dialog hr {
+    clear: both;
+    visibility: hidden;
+}
+
+.au-dialog-fc-error {
+    width: 350px;
+    color: #555;
+    padding: 4px;
+    border: 1px solid #B5B8C8;
+    font-size: 12px;
+    margin-bottom: 15px;
+    background: #FFEAEA;
+}

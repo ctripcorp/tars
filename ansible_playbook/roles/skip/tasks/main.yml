@@ -1,0 +1,3 @@
+# ansible-playbook skip.yml -i hosts -e release_version=222 -e package_url="http://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war" -e ansistrano_after_symlink_tasks_file="{{ playbook_dir }}/shared/after-symlink.yml"
+- name: ANSISTRANO | Check if current
+  shell: readlink {{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }} | grep -e '/{{ release_version }}$'

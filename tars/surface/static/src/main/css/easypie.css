@@ -1,0 +1,52 @@
+@charset 'utf-8';
+.easypie {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-weight: 100;
+  width: 100%;
+  /*96px*/
+  height: 100%;
+  /*96px*/
+}
+.easypie canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.easypie .percent {
+  display: inline-block;
+  z-index: 2;
+  line-height: 96px;
+  font-size: 2em;
+}
+.easypie .percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .5em;
+}
+.easypie .second {
+  display: inline-block;
+  z-index: 2;
+  line-height: 96px;
+  font-size: 2em;
+}
+.easypie .second:after {
+  content: 's';
+  margin-left: 0.1em;
+  font-size: .5em;
+}
+.easypie.lg {
+  width: 196px;
+  height: 196px;
+}
+.easypie.lg .percent,
+.easypie.lg .second {
+  line-height: 196px;
+  font-size: 6em;
+}
+.easypie.lg .percent:after,
+.easypie.lg .second:after {
+  margin-left: 0.4em;
+  font-size: 0.6em;
+}

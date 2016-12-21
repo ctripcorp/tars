@@ -1,0 +1,129 @@
+<div class="wrapper" ng-controller="com.ctrip.tars.index.Controller">
+  <div class="flat-shirt" style="height: 256px;">
+    <div class="global-search container" id="global-search">
+      <div class="row">
+        <div class="col-xs-5 col-sm-6 col-md-7 col-lg-7">
+          <a href="javascript:void(0);" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-5 col-md-4 col-lg-4">
+          <!--ng-show="search" ng-class="{true:'active'}[search]"-->
+          <input type="text" class="global-search-keyword pull-right" ng-model="filters" placeholder="app's id or name" ng-change="filter()" />
+          <!--抱歉，此功能暂未提供。-->
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+          <a href="javascript:void(0)" ng-click="search = !search;" title="搜索" tooltip style="padding: 0px; font-size: 18px; line-height: 56px; color: #fff;" class="pull-left"><i class="fa fa-search"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="global-search-suggest">
+            <ul class="list-group">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flat-trouser container" style="position: relative; top: -184px; width: 100%;">
+    <div class="row">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+      </div>
+      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-left: 0px; padding-right: 0px;">
+        <div class="box" style="background-color: transparent; margin-bottom: 0px; position: absolute;">
+
+          <div class="box-body">
+            <div id="apps-scroller" style="height: {{ size.height }}px;" ng-style="{ 'height': '{{ size.height }}px' }">
+              <div class="gridster ready iscroll-scroller" style="min-height: {{ size.height + 32 }}px;" ng-style="{ 'minHeight': '{{ size.height + 32 }}px' }">
+
+                <div class="box-header flat-scale flat-card" style="padding: 16px; margin-bottom: 0px; background: #ffffff;">
+                  <h3 class="box-title">
+                    <i class="fa fa-th"></i>
+                    <span>&nbsp;应用列表</span>
+                  </h3>
+                </div>
+
+                <div class="items" ng-controller="com.ctrip.tars.apps.Controller">
+                  <popouts style="padding-bottom: 32px;">
+                    <popout ng-repeat="popout in popouts track by $index">
+                      <div class="item" style="width: auto; margin: 0px 32px 0px 96px; padding: 16px 0px 15px 0px; border-bottom: 1px solid #fafafa;">
+                        <div class="pull-left">
+                          <div class="img-circle photo-tip active">
+                            <i class="fa fa-sitemap"></i>
+                          </div>
+                        </div>
+                        <popout-head>
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div style="font-size: 18px; color: #757575; text-align: right;">
+
+                                  <a id="btn-add-{{popout.id}}" href="javascript:void(0);" title="添加到多应用发布" style="margin-left: 16px;" tooltip ng-click="addOrRemove($event, popout);"><i class="fa fa-{{getSelectedType(popout)}}"></i></a>
+
+                                  <a href="javascript:void(0);" ng-click="notSupport($event);" title="关注此应用" tooltip style="margin-left: 16px;"><i class="fa fa-heart"></i></a>
+
+                                  <a href="javascript:void(0);" ng-click="notSupport($event);" title="分享" tooltip style="margin-left: 16px;"><i class="fa fa-share-alt"></i></a>
+
+                                  <a href="javascript:void(0);" ng-click="notSupport($event);" title="更多" tooltip style="margin-left: 16px;"><i class="fa fa-ellipsis-v"></i></a>
+                                </div>
+                              </div>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h5 style="font-size: 18px; word-wrap: break-word;">{{popout.name}}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </popout-head>
+                        <popout-body style="padding: 0px 24px;">
+                          <p style="color: #757575; font-size: 14px;">
+                            AppId： {{popout.id}}
+                          </p>
+                          <p style="color: #757575; font-size: 14px;" ng-if="popout.groups.length > 0">
+                            Groups：
+                          </p>
+                          <div ng-class="{true:'active'}[group.active]" ng-click="selectGroup(popout, group)" ng-repeat="group in popout.groups track by group.id" class="column last details item-content sub-items" style="min-height: 78px; padding-right: 64px; margin: 8px 24px;">
+                            <h5 class="ng-binding ng-scope">{{group.name}}</h5>
+                            <p class="track" style="font-size: 12px;">
+                              groupId： {{group.id}}
+                              <br/> siteName： {{group.siteName}}
+                              <br/>
+                            </p>
+                            <div class="pull-right" style="position: absolute; right: 24px; top: 50%; margin-top: -8px;">
+                              <input class="cycle" type="checkbox" ng-checked="group.active">
+                              <label></label>
+                            </div>
+                          </div>
+                        </popout-body>
+                      </div>
+                      <div ng-if="popout.active" style="padding: 16px 16px 16px 32px;">
+                        <a href="javascript:void(0);" ng-class="{false:'disabled'}[hasSelectedGroup(popout)]" ng-disabled="!hasSelectedGroup(popout)" ng-click="gotoSingleDeployment(popout); $event.stopPropagation();" title="执行发布" tooltip class="btn" style="margin-right:16px; border: 0px none; -webkit-box-shadow: none; -box-shadow: none;"><i class="fa fa-paper-plane-o"></i><span style="margin-left: 32px;">执行发布</span></a>
+                      </div>
+                    </popout>
+                    <div ng-if="apps.length<=0" class="popout" style="height: {{ size.height }}px; text-align: center; line-height: {{ size.height }}px;">
+                      对不起，当前没有应用信息供查看。</div>
+                  </popouts>
+
+                  <!--
+                  <li-app ng-repeat="subscription in apps" dataname="{{subscription.name}}" dataid="{{subscription.id}}" dataimportance="{{subscription.importance}}" dataappversion="{{subscription.appVersion}}" dataproductline="{{subscription.productLine}}" dataproduct="{{subscription.product}}" dataowner="{{subscription.owner}}" dataorganization="{{subscription.organization}}" datamanager="{{subscription.manager}}" datadescription="{{subscription.description}}" datahealth="{{subscription.healthLevel}}" datafavorite="{{subscription.favorite}}" on-more="gotoSingleDeployment(subscription);" on-favorite="favorite(subscription);"></li-app>
+                  -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1" style="position: relative; padding-left: 0px; padding-right: 0px;">
+        <action id="selected-apps" class="pull-right yellow" style="top: 156px; margin-right: -28px; right: 50%; font-size:16px; position: absolute;" datasize="56" datatitle="多应用发布" dataicon="plus" datadisabled="false" on-handle="gotoParallelDeployment()">
+          <span style="font-size: 24px;" ng-if="getSelectedCount()>0">{{getSelectedCount()}}</span>
+        </action>
+      </div>
+    </div>
+
+  </div>
+</div>
