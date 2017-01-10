@@ -41,6 +41,11 @@ angular.module("com.ctrip.tars.group")
 
       $scope.$on('deployment.group.update', function(event, data) {
         var urlParams = $scope.getURLParams();
+
+        if (urlParams[URL_PARAMS.GROUP] != data.id) {
+          return;
+        }
+
         groupService.load({
           group: data.id
         }, {}, function(group) {
@@ -49,7 +54,8 @@ angular.module("com.ctrip.tars.group")
             $scope.app.groups.put(group.id, group);
           }
 
-          if (data.active && group.currentDeployment && !urlParams[URL_PARAMS.DEPLOYMENT] &&
+          var urlParams = $scope.getURLParams();
+          if (urlParams[URL_PARAMS.GROUP] == data.id && data.active && group.currentDeployment && !urlParams[URL_PARAMS.DEPLOYMENT] &&
             (($scope.deployment && $scope.deployment.id && group.currentDeployment.id == $scope.deployment.id) || !$scope.deployment)) {
             var params = {};
             params[URL_PARAMS.DEPLOYMENT] = group.currentDeployment.id;
@@ -75,6 +81,11 @@ angular.module("com.ctrip.tars.group")
         //    origin: $scope.group.id
         //  });
         //}
+
+        var urlParams = $scope.getURLParams();
+        if (group.id != urlParams[URL_PARAMS.GROUP]) {
+          return;
+        }
 
         $scope.group = group;
 

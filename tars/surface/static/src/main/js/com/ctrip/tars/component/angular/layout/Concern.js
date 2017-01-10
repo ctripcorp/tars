@@ -7,7 +7,7 @@ var tabpanel = angular.module("com.ctrip.tars.component.angular.layout.Concern",
       replace: true,
       transclude: true,
       scope: false,
-      template: '<div class="concern" style="overflow: hidden;" ng-transclude></div>',
+      template: '<div class="concern" style="overflow: hidden; width: 100%; height: 100%;" ng-transclude></div>',
       link: function(scope, element, attrs, controller) {},
       controller: ["$scope", function($scope) {
 

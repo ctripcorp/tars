@@ -36,6 +36,6 @@
   "license": "MIT",
   "debug": true,
   "skin": "default",
-  "version": "1.2.26",
+  "version": "1.2.32",
   "target": "local"
 }
