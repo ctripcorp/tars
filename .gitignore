@@ -2,7 +2,6 @@
 bower_components/
 node_modules/
 classes/
-jre/
 lib/
 *.css
 jsvm.min.js
