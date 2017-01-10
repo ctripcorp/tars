@@ -310,79 +310,79 @@ var events = angular
       }
     ])
 
-.directive(
-  "liEvent",
-  function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      transclude: true,
-      scope: {
-        //appId: "@dataappid",
-        //deployId: "@datadeployid",
-        //deployStatus: "@datadeploystatus",
-        //deployTarget: "@datadeploytarget",
-        //deployTargetStatus: "@datadeploytargetstatus",
-        //detail: "@datadetail",
-        //logLevel: "@datalogLevel",
-        //logTimestamp: "@datalogtimestamp",
+  .directive(
+    "liEvent",
+    function() {
+      return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        scope: {
+          //appId: "@dataappid",
+          //deployId: "@datadeployid",
+          //deployStatus: "@datadeploystatus",
+          //deployTarget: "@datadeploytarget",
+          //deployTargetStatus: "@datadeploytargetstatus",
+          //detail: "@datadetail",
+          //logLevel: "@datalogLevel",
+          //logTimestamp: "@datalogtimestamp",
 
-        id: "@dataid",
-        index: "@dataindex"
-      },
-      controller: ["$scope", function($scope) {
-        $scope.event = $scope.$parent.events[$scope.index];
-      }],
-      template: [
-        //'<li class="event {{ event.levelClass }}">',
-        //'<div class="content {{ event.direction }}">',
-        //'<div class="desc"><div class="thumb event-1">{{ event.logModule }}</div><div class="text">{{ event.logLevel }}</div></div>',
-        //'<div class="content-inner">',
-        //'<h3>{{event.logTimestamp}} -- [{{ event.deployTargetName }}] &nbsp;&nbsp; [{{ event.deployStatus }}] &nbsp;&nbsp; [{{ event.deployTargetStatus }}] &nbsp;&nbsp; [{{ event.logLevel }}] </h3>',
-        //'<p>{{ event.detail }}</p>',
-        //'</div>',
-        //'</div>',
-        //'</li>'
+          id: "@dataid",
+          index: "@dataindex"
+        },
+        controller: ["$scope", function($scope) {
+          $scope.event = $scope.$parent.events[$scope.index];
+        }],
+        template: [
+          //'<li class="event {{ event.levelClass }}">',
+          //'<div class="content {{ event.direction }}">',
+          //'<div class="desc"><div class="thumb event-1">{{ event.logModule }}</div><div class="text">{{ event.logLevel }}</div></div>',
+          //'<div class="content-inner">',
+          //'<h3>{{event.logTimestamp}} -- [{{ event.deployTargetName }}] &nbsp;&nbsp; [{{ event.deployStatus }}] &nbsp;&nbsp; [{{ event.deployTargetStatus }}] &nbsp;&nbsp; [{{ event.logLevel }}] </h3>',
+          //'<p>{{ event.detail }}</p>',
+          //'</div>',
+          //'</div>',
+          //'</li>'
 
 
 
-        '<div class="item details events Mon animate-session firstItem">',
+          '<div class="item details events Mon animate-session firstItem">',
 
-        '<div class="border"></div>',
+          '<div class="border"></div>',
 
-        '<div class="container-fluid">',
-        '<div class="row">',
-        '<div class="col-lg-1 col-md-2 col-sm-3 col-xs-3">',
-        '<div class="column status {{ event.levelClass }}" style="margin: 14% auto auto auto;">',
-        '{{statusSymbol}}',
-        '</div>',
-        '<div class="text {{ event.levelClass }}">{{ event.logLevel }}</div>',
-        '</div>',
+          '<div class="container-fluid">',
+          '<div class="row">',
+          '<div class="col-lg-1 col-md-2 col-sm-3 col-xs-3">',
+          '<div class="column status {{ event.levelClass }}" style="margin: 14% auto auto auto;">',
+          '{{statusSymbol}}',
+          '</div>',
+          '<div class="text {{ event.levelClass }}">{{ event.logLevel }}</div>',
+          '</div>',
 
-        '<div class="col-lg-11 col-md-10 col-sm-9 col-xs-9">',
-        '<div class="column last details item-content {{ event.levelClass }}" style="cursor: default;">',
-        '<expander name="events" style="cursor: default;">',
-        '<expander-head>',
+          '<div class="col-lg-11 col-md-10 col-sm-9 col-xs-9">',
+          '<div class="column last details item-content {{ event.levelClass }}" style="cursor: default;">',
+          '<expander name="events" style="cursor: default;">',
+          '<expander-head>',
 
-        '<div>',
-        '<h5 class="">『 {{event.logTimestamp}} 』『 {{ event.deployTargetName }} 』『 {{event.logModule.toUpperCase()}} 』『 发布单状态：{{ event.deployStatus }} 』『 主机状态：{{ event.deployTargetStatus }} 』</h5>',
-        '<p class="track">',
-        '{{event.detail }}',
-        '</p>',
-        '</div>',
+          '<div>',
+          '<h5 class="">『 {{event.logTimestamp}} 』『 {{ event.deployTargetName }} 』『 {{event.logModule.toUpperCase()}} 』『 发布单状态：{{ event.deployStatus }} 』『 主机状态：{{ event.deployTargetStatus }} 』</h5>',
+          '<p class="track">',
+          '{{event.detail }}',
+          '</p>',
+          '</div>',
 
-        '</expander-head>',
-        '<expander-body>',
-        '<div class="details">',
-        '</div>',
-        '</expander-body>',
-        '</expander>',
-        '</div>',
-        '</div>',
-        '</div>',
-        '</div>',
-        '</div>'
-      ].join("")
-    };
-  });
+          '</expander-head>',
+          '<expander-body>',
+          '<div class="details">',
+          '</div>',
+          '</expander-body>',
+          '</expander>',
+          '</div>',
+          '</div>',
+          '</div>',
+          '</div>',
+          '</div>'
+        ].join("")
+      };
+    });
 

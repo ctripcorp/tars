@@ -35,19 +35,19 @@
 
           click.offset({
 
-          left: e.originalEvent.pageX - startX,
-          top: e.originalEvent.pageY - startY
+            left: e.originalEvent.pageX - startX,
+            top: e.originalEvent.pageY - startY
 
-        });
+          });
 
         if ('touchmove' == e.type && active)
 
           touch.offset({
 
-          left: e.originalEvent.pageX - startX,
-          top: e.originalEvent.pageY - startY
+            left: e.originalEvent.pageX - startX,
+            top: e.originalEvent.pageY - startY
 
-        });
+          });
 
       }).on('mouseup touchend', function() {
 

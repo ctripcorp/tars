@@ -189,72 +189,72 @@ angular
       }
     ])
 
-.directive(
-  "liEvent",
-  function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      transclude: true,
-      controller: ["$scope", function($scope) {
-        //$scope.log = $scope.$parent.logs[$scope.index];
-        $scope.getDeployTargetInfo = function() {
-          return $scope.log.deployTargetName ? "『  " + $scope.log.deployTargetName + " ＜ " + $scope.log.deployTargetIp + " ＞ 』" : "";
-        };
-      }],
-      template: [
-        //'<li class="event {{ log.levelClass }}">',
-        //'<div class="content {{ log.direction }}">',
-        //'<div class="desc"><div class="thumb event-1">{{ log.logModule }}</div><div class="text">{{ log.logLevel }}</div></div>',
-        //'<div class="content-inner">',
-        //'<h3>{{log.logTimestamp}} -- [{{ log.deployTargetName }}] &nbsp;&nbsp; [{{ log.deployStatus }}] &nbsp;&nbsp; [{{ log.deployTargetStatus }}] &nbsp;&nbsp; [{{ log.logLevel }}] </h3>',
-        //'<p>{{ log.detail }}</p>',
-        //'</div>',
-        //'</div>',
-        //'</li>'
+  .directive(
+    "liEvent",
+    function() {
+      return {
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        controller: ["$scope", function($scope) {
+          //$scope.log = $scope.$parent.logs[$scope.index];
+          $scope.getDeployTargetInfo = function() {
+            return $scope.log.deployTargetName ? "『  " + $scope.log.deployTargetName + " ＜ " + $scope.log.deployTargetIp + " ＞ 』" : "";
+          };
+        }],
+        template: [
+          //'<li class="event {{ log.levelClass }}">',
+          //'<div class="content {{ log.direction }}">',
+          //'<div class="desc"><div class="thumb event-1">{{ log.logModule }}</div><div class="text">{{ log.logLevel }}</div></div>',
+          //'<div class="content-inner">',
+          //'<h3>{{log.logTimestamp}} -- [{{ log.deployTargetName }}] &nbsp;&nbsp; [{{ log.deployStatus }}] &nbsp;&nbsp; [{{ log.deployTargetStatus }}] &nbsp;&nbsp; [{{ log.logLevel }}] </h3>',
+          //'<p>{{ log.detail }}</p>',
+          //'</div>',
+          //'</div>',
+          //'</li>'
 
 
 
-        '<div class="item details console Mon animate-session firstItem container-fluid">',
+          '<div class="item details console Mon animate-session firstItem container-fluid">',
 
-        //'<div class="border"></div>',
-        '<div class="row">',
-        '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">',
+          //'<div class="border"></div>',
+          '<div class="row">',
+          '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">',
 
-        '<div style="padding: 0px 8px 0px 72px;">',
+          '<div style="padding: 0px 8px 0px 72px;">',
 
-        '<div class="pull-left" style="position: absolute; top: 50%; margin: -20px auto auto -72px; width: 72px;">',
-        '<div class="column status {{ log.levelClass }}">',
-        '{{statusSymbol}}',
-        '</div>',
-        '<div class="text {{ log.levelClass }}">{{ log.logLevel }}</div>',
-        '</div>',
+          '<div class="pull-left" style="position: absolute; top: 50%; margin: -20px auto auto -72px; width: 72px;">',
+          '<div class="column status {{ log.levelClass }}">',
+          '{{statusSymbol}}',
+          '</div>',
+          '<div class="text {{ log.levelClass }}">{{ log.logLevel }}</div>',
+          '</div>',
 
-        '<div class="column last details item-content {{ log.levelClass }}" style="cursor: default; padding-left: 16px; padding-right: 8px;">',
-        '<expander name="console" style="cursor: default;">',
-        '<expander-head>',
-        '<h5 class="">『 {{log.logTimestamp}} 』{{ getDeployTargetInfo() }}&nbsp;&nbsp;&nbsp;&nbsp;{{log.detail}}</h5>',
-        '<p class="track">',
-        '发布单状态：{{ log.deployStatus }}<br>',
-        '主机状态：{{ log.deployTargetStatus }}<br>',
-        '</p>',
-        '</expander-head>',
-        '<expander-body>',
-        '<p class="track">',
-        'Log Id：{{log.logId}} <br>',
-        'Log Module：{{log.logModule.toUpperCase()}} <br>',
-        '{{ log.stacktrace }}',
-        '</p>',
-        '</expander-body>',
-        '</expander>',
-        '</div>',
+          '<div class="column last details item-content {{ log.levelClass }}" style="cursor: default; padding-left: 16px; padding-right: 8px;">',
+          '<expander name="console" style="cursor: default;">',
+          '<expander-head>',
+          '<h5 class="">『 {{log.logTimestamp}} 』{{ getDeployTargetInfo() }}&nbsp;&nbsp;&nbsp;&nbsp;{{log.detail}}</h5>',
+          '<p class="track">',
+          '发布单状态：{{ log.deployStatus }}<br>',
+          '主机状态：{{ log.deployTargetStatus }}<br>',
+          '</p>',
+          '</expander-head>',
+          '<expander-body>',
+          '<p class="track">',
+          'Log Id：{{log.logId}} <br>',
+          'Log Module：{{log.logModule.toUpperCase()}} <br>',
+          '{{ log.stacktrace }}',
+          '</p>',
+          '</expander-body>',
+          '</expander>',
+          '</div>',
 
 
-        '</div>',
-        '</div>',
-        '</div>',
-        '</div>'
-      ].join("")
-    };
-  });
+          '</div>',
+          '</div>',
+          '</div>',
+          '</div>'
+        ].join("")
+      };
+    });
 

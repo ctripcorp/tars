@@ -113,26 +113,26 @@ var groups = angular
 
   }])
 
-.controller("com.ctrip.tars.groups.group.Controller", ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+  .controller("com.ctrip.tars.groups.group.Controller", ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
 
-  $scope.$on('dispatcher.interval.timer', function(event, data) {
-    $scope.$broadcast('deployment.group.update', $scope.group);
-  });
-
-  /*
-    $scope.$on('accordion.active', function(event, group) {
-      //$location.search(URL_PARAMS.GROUP, group.id).search(URL_PARAMS.DEPLOYMENT, null);
-      //$scope.$broadcast('deployment.group.update', $scope.group);
+    $scope.$on('dispatcher.interval.timer', function(event, data) {
+      $scope.$broadcast('deployment.group.update', $scope.group);
     });
-  */
-  var urlParams = $scope.getURLParams();
-  if ($scope.group.active && urlParams[URL_PARAMS.GROUP] != $scope.group.id) {
-    var params = {};
-    params[URL_PARAMS.GROUP] = $scope.group.id;
-    params[URL_PARAMS.DEPLOYMENT] = null;
-    $scope.forceSearch(params);
-    //$scope.$broadcast('deployment.group.update', $scope.group);
-  }
 
-}]);
+    /*
+      $scope.$on('accordion.active', function(event, group) {
+        //$location.search(URL_PARAMS.GROUP, group.id).search(URL_PARAMS.DEPLOYMENT, null);
+        //$scope.$broadcast('deployment.group.update', $scope.group);
+      });
+    */
+    var urlParams = $scope.getURLParams();
+    if ($scope.group.active && urlParams[URL_PARAMS.GROUP] != $scope.group.id) {
+      var params = {};
+      params[URL_PARAMS.GROUP] = $scope.group.id;
+      params[URL_PARAMS.DEPLOYMENT] = null;
+      $scope.forceSearch(params);
+      //$scope.$broadcast('deployment.group.update', $scope.group);
+    }
+
+  }]);
 
