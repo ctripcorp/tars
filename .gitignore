@@ -4,6 +4,8 @@ node_modules/
 classes/
 jre/
 lib/
+*.css
+jsvm.min.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -59,8 +61,6 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-settings_local.py
-tars/settings/local.py
 
 # Flask stuff:
 instance/
@@ -96,3 +96,19 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Django
+settings_local.py
+tars/settings/local.py
+
+# Mac
+.DS_Store
+
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
