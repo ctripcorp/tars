@@ -1,1 +1,0 @@
-$import("js.awt.Component"),Class.forName({name:"class js.awt.Frame extends js.awt.Component","public Frame":function(){}});

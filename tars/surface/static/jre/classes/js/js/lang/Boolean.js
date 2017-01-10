@@ -1,1 +1,0 @@
-Class.forName({name:"class Boolean",alias:"js.lang.Boolean",Boolean:function(){},"public equals":function(a){return Object.isBoolean(a)&&this==a}});

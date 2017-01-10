@@ -1,1 +1,0 @@
-Class.forName({name:"class String",alias:"js.lang.String",String:function(){},"public trim":function(){var n=/^\s+|\s+$/g;return function(){return this.replace(n,"")}}(),"public equals":function(n){return Object.isString(n)&&this==n},getLength:function(){return this.length}});

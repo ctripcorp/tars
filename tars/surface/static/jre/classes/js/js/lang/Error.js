@@ -1,1 +1,0 @@
-Class.forName({name:"class Error",alias:"js.lang.Error","private name":"js.lang.Error","private number":1,Error:function(r,a,e,s){this.message=r,this.fileName=a,this.stack=s,this.lineNumber=e},"static init":function(){for(var r={},a=js.lang.Throwable.$class.getMethods(),e=a.length,s=0;s<e;s++)r[a[s]._name]=a[s]._value;Object.extend(Error.prototype,r)}}),js.lang.Error.init();

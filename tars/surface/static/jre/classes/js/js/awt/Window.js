@@ -1,1 +1,0 @@
-$import("js.awt.Window"),Class.forName({name:"class js.awt.Dialog extends js.awt.Window","public Dialog":function(){}});

@@ -1,1 +1,0 @@
-$import("js.lang.Throwable","BootstrapClassLoader"),Class.forName({name:"class RangeError",alias:"js.lang.RangeError","private name":"js.lang.RangeError","private number":3,RangeError:function(){}});

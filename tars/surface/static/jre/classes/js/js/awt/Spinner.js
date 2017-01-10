@@ -1,1 +1,0 @@
-$import("js.awt.Component"),Class.forName({name:"class js.awt.Spinner extends js.awt.Component","public Spinner":function(){}});

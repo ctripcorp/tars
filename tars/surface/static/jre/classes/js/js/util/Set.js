@@ -1,1 +1,0 @@
-$import("js.util.Collection","BootstrapClassLoader"),Class.forName({name:"class js.util.Set extends js.util.Collection"});

@@ -1,1 +1,0 @@
-$import("js.lang.Error","BootstrapClassLoader"),Class.forName({name:"class js.test.AssertionError extends js.lang.Error","private name":"js.test.AssertionError","private number":-1});

@@ -1,1 +1,0 @@
-$import("js.lang.Exception","BootstrapClassLoader"),Class.forName({name:"class js.lang.IllegalArgumentException extends js.lang.Exception","private name":"js.lang.IllegalArgumentException","private number":102});

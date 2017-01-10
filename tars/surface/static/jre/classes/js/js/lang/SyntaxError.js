@@ -1,1 +1,0 @@
-$import("js.lang.Throwable","BootstrapClassLoader"),Class.forName({name:"class SyntaxError",alias:"js.lang.SyntaxError","private name":"js.lang.SyntaxError","private number":5,SyntaxError:function(){}});

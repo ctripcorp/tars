@@ -1,1 +1,0 @@
-Class.forName({name:"class js.lang.Exception extends js.lang.Throwable","private name":"js.lang.Exception","private number":0,Exception:function(e,s,a,n){this.message=e,this.fileName=s,this.stack=n,this.lineNumber=a}});

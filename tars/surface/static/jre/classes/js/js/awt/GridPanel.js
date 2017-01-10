@@ -1,1 +1,0 @@
-$import("js.awt.Panel"),Class.forName({name:"class js.awt.TabPanel extends js.awt.Panel","public TabPanel":function(){}});

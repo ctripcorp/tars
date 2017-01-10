@@ -1,1 +1,0 @@
-$import("js.lang.Exception","BootstrapClassLoader"),Class.forName({name:"class js.lang.CloneNotSupportedException extends js.lang.Exception","private name":"js.lang.CloneNotSupportedException","private number":109});

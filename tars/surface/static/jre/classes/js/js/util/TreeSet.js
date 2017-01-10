@@ -1,1 +1,0 @@
-$import("js.util.Set","BootstrapClassLoader"),Class.forName({name:"class js.util.TreeSet extends js.util.Set"});

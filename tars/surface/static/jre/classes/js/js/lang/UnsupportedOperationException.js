@@ -1,1 +1,0 @@
-$import("js.lang.Exception","BootstrapClassLoader"),Class.forName({name:"class js.lang.UnsupportedOperationException extends js.lang.Exception","private name":"js.lang.UnsupportedOperationException","private number":108});

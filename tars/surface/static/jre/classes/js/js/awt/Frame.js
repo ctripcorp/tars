@@ -1,1 +1,0 @@
-$import("js.awt.Component"),Class.forName({name:"class js.awt.Menu extends js.awt.Component","public Menu":function(){}});
