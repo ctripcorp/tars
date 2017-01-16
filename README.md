@@ -33,6 +33,8 @@ Build frontend using docker, please ensure container exit code is 0
 make frontend_docker
 ```
 
+If failed to install bower components, please try branch `demo/static_embedded`
+
 # Docker demo
 
 ``` bash
