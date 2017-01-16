@@ -57,8 +57,13 @@ npm_registry:
 frontend_requirements_gulp: npm_registry
 	gulp --version || npm install -g gulp
 
-frontend: frontend_requirements_gulp
-	cd tars/surface/static && npm install && gulp
+frontend_npm: npm_registry
+	cd tars/surface/static && npm install
+
+frontend_gulp: frontend_requirements_gulp
+	cd tars/surface/static && gulp
+
+frontend: frontend_npm frontend_gulp
 
 frontend_docker:
 	docker-compose -f docker-compose-frontend.yml up
