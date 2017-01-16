@@ -3,4 +3,4 @@ frontend_build:
   volumes:
     - .:/code
   working_dir: /code
-  command: make frontend
+  command: make frontend_npm
