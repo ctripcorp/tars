@@ -1,0 +1,1 @@
+Class.forName({name:"abstract class js.lang.ClassLoader extends Object","@Setter @Getter private parent":null,"@Setter @Getter private classes":[],"abstract loadClass":function(e,t,a,s){},"static getSystemClassLoader":function(e){return atom.misc.Launcher.getLauncher().getClassLoader()}});

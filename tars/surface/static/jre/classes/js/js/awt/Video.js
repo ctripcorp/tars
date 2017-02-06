@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"class js.awt.Video extends js.awt.Component","public Video":function(){}});

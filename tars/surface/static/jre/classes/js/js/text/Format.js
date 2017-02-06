@@ -1,0 +1,1 @@
+Class.forName({name:"abstract class js.text.Format extends Object",Format:function(){},"abstract format":function(t){},"abstract parse":function(t){}});

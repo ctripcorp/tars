@@ -1,0 +1,1 @@
+$import("js.util.Set","BootstrapClassLoader"),$import("js.util.KeyIterator","BootstrapClassLoader"),Class.forName({name:"class js.util.KeySet extends js.util.Set","private _element":null,KeySet:function(e){this._element=e},iterator:function(){return new js.util.KeyIterator(this._element)},size:function(){return this._element.size()}});

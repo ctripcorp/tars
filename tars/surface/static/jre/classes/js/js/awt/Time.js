@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"class js.awt.Time extends js.awt.Component","public Time":function(){}});

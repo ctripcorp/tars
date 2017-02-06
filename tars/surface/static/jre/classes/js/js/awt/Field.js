@@ -1,0 +1,1 @@
+$import("js.awt.Component"),Class.forName({name:"abstract class js.awt.Field extends js.awt.Component","public Field":function(){}});

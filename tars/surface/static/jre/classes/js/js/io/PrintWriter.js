@@ -1,0 +1,1 @@
+$import("js.io.Writer","BootstrapClassLoader"),Class.forName({name:"class js.io.PrintWriter extends js.io.Writer",PrintWriter:function(){},print:function(i,r,t,n){},println:function(i,r,t){this.print(i,r,t,!0)}});
