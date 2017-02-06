@@ -4,6 +4,8 @@ set -e
 
 cd $(dirname $0)
 
+./init.sh
+
 docker-compose -f ../docker-compose-frontend.yml up
 
 docker-compose up -d db
