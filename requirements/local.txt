@@ -1,10 +1,9 @@
 -i http://pypi.douban.com/simple
 -r base.txt
 
-ansible <2.0
-django-extensions <1.7
+ansible<2.0
+django-extensions<1.7
 django-debug-toolbar
-# django-rest-swagger
 django-celery>=3.1.16
 graphviz
 Werkzeug

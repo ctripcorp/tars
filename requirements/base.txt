@@ -2,18 +2,18 @@
 celery>=3.0,<4.0
 django-fsm
 
-
 # rest_client requirements
 pyyaml
+urllib3>=1.21.1,<1.23
 requests>=2.6.0
 elasticsearch
 
 # tars requirements
 decisionTable
-Django>=1.7,<1.8
+Django>=1.8,<1.9
 django-constance>=1.2
 django-picklefield
-django-filter <=0.11.0
+django-filter<=0.11.0
 djangorestframework>=3.0.4,<3.1.0
 djangorestframework-camel-case
 djangorestframework-jsonp
