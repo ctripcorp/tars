@@ -52,7 +52,7 @@ db_migrate:
 	python manage.py migrate $(SETTINGS_CONFIG_LOCAL)
 
 npm_registry:
-	npm config set registry http://registry.npm.taobao.org
+	npm config set registry https://registry.npmmirror.com
 
 frontend_requirements_gulp: npm_registry
 	gulp --version || npm install -g gulp
